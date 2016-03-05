@@ -34,8 +34,8 @@
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
   <h2>Search for a scholarship!</h2>
-  <form action="">
-    <input type="text" name="searchHome" id="searchHome" required>
+  <form class="new-post">
+        <input type="text" name="text" placeholder="Type to add new posts" required></input>
   </form>
 </div>
 
@@ -45,12 +45,9 @@
     <div class="section-header">
     Scholarship List
   </div>
-    {{> scholarshipList}}
-    {{> scholarshipList}}
-    {{> scholarshipList}}
-    {{> scholarshipList}}
-    {{> scholarshipList}}
-    {{> scholarshipList}}
+    {{#each posts}}
+        {{> post}}
+      {{/each}}
   </div>
   <div class="col-xs-2">
     <div class="section-header">
@@ -70,13 +67,9 @@
 
 </body>
 
-<template name="scholarshipList" id="scholarshipList">
-  
+<template name="post"> 
   <div class="schPost">
-    <h3>Scholarship Title</h3>
-    <p>Scholarship Details. Lorem ipsum dolor sit amet, purto aperiam repudiare nam ad, sed debet numquam fuisset ne. Qui an eirmod praesent, ut homero saperet ius, ne dolore graeci instructior sed. Mazim populo eam ut. No vix legimus feugait, accumsan senserit ea nec. Ne eos summo verterem, unum nominavi facilisis pri ei, has ne veri luptatum perfecto.
-
-Tota iudico oportere in vim, no his dicat albucius definitiones, honestatis referrentur cum ad. Cu utamur referrentur quo. Eam porro insolens ex, no per illum corpora. Sed case lobortis te, pro vocent intellegat no. Unum quodsi nostrud mei at.<a href="#">Read More</a></p>
+    <h3>{{title}}</h3>
   <hr>
   </div>
 </template>
