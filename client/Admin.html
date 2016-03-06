@@ -1,16 +1,24 @@
 
   <template name="admin">
-    <h1 style="color:black; margin:50px;">ADMIN</h1>
+  	<div class="container">
+    <h1 style="color:black;">ADMIN</h1>
     {{> addPostForm}}
+    </div>
   </template>
 
   <template name="addPostForm">
+
     <form class="new-post">
         <input type="text" name="title" placeholder="title" required>
         <input type="text" name="eligibility" placeholder="eligibility" required>
         <input type="text" name="location" placeholder="location" required>
-        <input type="text" name="description" placeholder="description" required>
+        <input style="height:200px" type="textarea" name="description" placeholder="description" required>
         <input type="text" name="link" placeholder="link" required>
-        <input type="submit" name="btn-submit" value="Submit">
+        <input type="submit" name="btn-submit" value="Submit" style="width:100px;">
+    </form>
+
+    <form class="admin-control">
+    	<input type="submit" class="btn-link" value="View Home" name="goToHomeButton" >
     </form>
 </template>
+

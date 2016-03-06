@@ -3,8 +3,18 @@ Posts = new Mongo.Collection("posts");
 Template.home.helpers({
     posts: function () {
     return Posts.find({}, {sort: {createdAt: -1}});    
-    }
+    },
+    
   });
+
+Template.searchContainter.events({
+  "submit .search-bar": function (event){
+    event.preventDefault();
+    var text = event.target.text.value;
+    alert(text);
+    return Posts.find({location:text}, {sort: {createdAt: -1}}); 
+  }
+});
 
 Template.addPostForm.events({
     "submit .new-post": function (event) {
@@ -31,6 +41,14 @@ Template.addPostForm.events({
       // Clear form
       event.target.title.value= "";
       alert("post added!");
+    },
+
+    "submit .admin-control": function(event){
+      event.preventDefault();
+        window.location.href = "/";
     }
 
   });
+
+
+

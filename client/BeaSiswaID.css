@@ -49,6 +49,12 @@
   display: block;
 }
 
+input {
+    margin: 10px;
+    width: 1000px;
+        padding: 5px 10px;
+}
+
 .post-title{
   font-size: 1.2em;
   font-weight: bold; 
@@ -59,4 +65,8 @@
 .post-sub-title{
   font-size: 0.7em;
   font-style: italic;
+}
+
+#location-list{
+  color: black;
 }
