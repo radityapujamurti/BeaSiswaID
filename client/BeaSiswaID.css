@@ -40,7 +40,23 @@
     font-weight: bold;
   }
 
+.schPost{
+  line-height: 1.2;
+}
 
-.new-post{
+.new-post input{
   color: black;
+  display: block;
+}
+
+.post-title{
+  font-size: 1.2em;
+  font-weight: bold; 
+  display: block;
+  margin-bottom:  
+}
+
+.post-sub-title{
+  font-size: 0.7em;
+  font-style: italic;
 }

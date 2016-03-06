@@ -1,0 +1,16 @@
+
+  <template name="admin">
+    <h1 style="color:black; margin:50px;">ADMIN</h1>
+    {{> addPostForm}}
+  </template>
+
+  <template name="addPostForm">
+    <form class="new-post">
+        <input type="text" name="title" placeholder="title" required>
+        <input type="text" name="eligibility" placeholder="eligibility" required>
+        <input type="text" name="location" placeholder="location" required>
+        <input type="text" name="description" placeholder="description" required>
+        <input type="text" name="link" placeholder="link" required>
+        <input type="submit" name="btn-submit" value="Submit">
+    </form>
+</template>

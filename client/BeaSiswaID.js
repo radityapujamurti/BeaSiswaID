@@ -12,12 +12,19 @@ Template.addPostForm.events({
       event.preventDefault();
 
       // Get value from form element
-      var text = event.target.title.value;
-      console.log(text);
+      var title = event.target.title.value;
+      var eligibility = event.target.eligibility.value;
+      var description = event.target.description.value;
+      var location = event.target.location.value;
+      var link = event.target.link.value;
  
       // Insert a task into the collection
       Posts.insert({
-        title: text,
+        title: title,
+        eligibility: eligibility,
+        description: description,
+        location: location,
+        link: link,
         createdAt: new Date() // current time
       });
  
@@ -25,4 +32,5 @@ Template.addPostForm.events({
       event.target.title.value= "";
       alert("post added!");
     }
+
   });

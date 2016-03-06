@@ -72,8 +72,11 @@
 
 <template name="post"> 
   <div class="schPost">
-    <h3>{{title}}</h3>
-  <hr>
+    <span class="post-title">{{title}}</span> 
+    <span class="post-sub-title">Eligibility: {{eligibility}} | Location: {{location}}</span>
+    <p style="margin-top: 10px;">{{description}}</p>  
+    <p>Source link: {{link}}</p>
+    <hr>
   </div>
 </template>
 
