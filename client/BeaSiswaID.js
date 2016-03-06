@@ -1,18 +1,19 @@
 Posts = new Mongo.Collection("posts");
 
-Template.body.helpers({
+Template.home.helpers({
     posts: function () {
     return Posts.find({}, {sort: {createdAt: -1}});    
     }
   });
 
-Template.body.events({
+Template.addPostForm.events({
     "submit .new-post": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
- 
+
       // Get value from form element
-      var text = event.target.text.value;
+      var text = event.target.title.value;
+      console.log(text);
  
       // Insert a task into the collection
       Posts.insert({
@@ -21,6 +22,7 @@ Template.body.events({
       });
  
       // Clear form
-      event.target.text.value = "";
+      event.target.title.value= "";
+      alert("post added!");
     }
   });
