@@ -1,4 +1,4 @@
-Router.route('/admin');
+Router.route('/register');
 
 Router.route('/',{
 	template: 'home'
