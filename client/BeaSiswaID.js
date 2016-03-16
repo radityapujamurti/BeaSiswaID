@@ -7,12 +7,13 @@ Template.home.helpers({
     
   });
 
-Template.searchContainter.events({
-  "submit .search-bar": function (event){
+Template.home.events({
+  "click .locationList": function (event){
     event.preventDefault();
-    var text = event.target.text.value;
+    var text = event.target.value;
     alert(text);
-    return Posts.find({location:text}, {sort: {createdAt: -1}}); 
+
+    Posts.find({location:text}, {sort: {createdAt: -1}});
   }
 });
 
