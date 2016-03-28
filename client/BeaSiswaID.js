@@ -1,19 +1,34 @@
 Posts = new Mongo.Collection("posts");
 
+Meteor.subscribe("posts");
+
+Template.home.onRendered(function(){
+  $(document).ready(function() {
+        $('#locationList').multiselect({
+          onChange: function(option, checked) {
+            var selectedOptions = $('#locationList option:selected').text();
+            console.log(selectedOptions);
+             return Posts.find({location:selectedOptions}, {sort: {createdAt: -1}});
+
+        }
+      });
+    });
+});
+
 Template.home.helpers({
     posts: function () {
     return Posts.find({}, {sort: {createdAt: -1}});    
-    },
+    }
     
   });
 
 Template.home.events({
-  "click .locationList": function (event){
-    event.preventDefault();
-    var text = event.target.value;
-    alert(text);
+  "change .locationList": function (event){
+    // alert("yo");
+    // event.preventDefault();
+    // var text = event.target.value;
+    // alert(text);
 
-    Posts.find({location:text}, {sort: {createdAt: -1}});
   }
 });
 
@@ -30,14 +45,7 @@ Template.addPostForm.events({
       var link = event.target.link.value;
  
       // Insert a task into the collection
-      Posts.insert({
-        title: title,
-        eligibility: eligibility,
-        description: description,
-        location: location,
-        link: link,
-        createdAt: new Date() // current time
-      });
+      Meteor.call("addPost", title, eligibility, description, location, link);
  
       // Clear form
       event.target.title.value= "";
@@ -51,5 +59,16 @@ Template.addPostForm.events({
 
   });
 
-
+Meteor.methods({
+  addPost: function(title,eligibility,description,location,link) {
+    Posts.insert({
+        title: title,
+        eligibility: eligibility,
+        description: description,
+        location: location,
+        link: link,
+        createdAt: new Date() // current time
+      });
+  }
+});
 
