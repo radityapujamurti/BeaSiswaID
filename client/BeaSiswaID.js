@@ -11,16 +11,36 @@ Template.home.onRendered(function(){
 
         }
       });
+
+        $('#contribute-btn').click(function() {
+            $('#contributeForm').attr('style','display:block');
+            $('#contribute-btn').attr('style','display:none');
+
+        });
+
+        $('#close-btn').click(function() {
+            $('#contributeForm').attr('style','display:none');
+            $('#contribute-btn').attr('style','display:block');
+
+        });
     });
 });
 
 Template.home.helpers({
     posts: function () {
       if(Session.get('location')){
-            return Posts.find({location:Session.get('location')}, {sort: {createdAt: -1}});    
+            return Posts.find({location:Session.get('location')},
+                              {verified:true}, {sort: {createdAt: -1}});    
       } else {
-            return Posts.find({}, {sort: {createdAt: -1}});    
+            return Posts.find({verified:true}, {sort: {createdAt: -1}});    
       }
+    }
+    
+  });
+
+Template.admin.helpers({
+    posts: function () {
+       return Posts.find({verified:false}, {sort: {createdAt: -1}});    
     }
     
   });
@@ -53,23 +73,32 @@ Template.addPostForm.events({
       // Clear form
       event.target.title.value= "";
       alert("post added!");
-    },
+    }
+  });
 
+Template.admin.events({
     "submit .admin-control": function(event){
       event.preventDefault();
         window.location.href = "/";
     }
-
-  });
+})
 
 Meteor.methods({
   addPost: function(title,eligibility,description,location,link) {
+    var isVerified;
+    if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
+      isVerified = true;
+    } else {
+      isVerified = false;
+    }
     Posts.insert({
         title: title,
         eligibility: eligibility,
         description: description,
         location: location,
         link: link,
+        author: Meteor.userId(),
+        verified: isVerified,
         createdAt: new Date() // current time
       });
   }

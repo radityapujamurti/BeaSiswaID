@@ -2,8 +2,20 @@
   <template name="admin">
   	<div class="container">
     <h1 style="color:black;">ADMIN</h1>
-    {{> addPostForm}}
+    <div id="adminPost" style="display:none;">
+            {{> addPostForm}}
     </div>
+    <div id="adminOverview" style="color:black;">
+    <h2>To be reviewed</h2>
+        {{#each posts}}
+        {{> post}}
+        <button id="verify-btn">Verify</button>
+        {{/each}}
+    </div>
+    </div>
+    <form class="admin-control">
+      <input type="submit" class="btn-link" value="View Home" name="goToHomeButton" >
+    </form>
   </template>
 
   <template name="addPostForm">
@@ -17,8 +29,6 @@
         <input type="submit" name="btn-submit" value="Submit" style="width:100px;">
     </form>
 
-    <form class="admin-control">
-    	<input type="submit" class="btn-link" value="View Home" name="goToHomeButton" >
-    </form>
+    
 </template>
 

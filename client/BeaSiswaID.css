@@ -40,6 +40,10 @@
     font-weight: bold;
   }
 
+  #login-dropdown-list{
+        left: -100px;
+  }
+
 .schPost{
   line-height: 1.2;
 }
@@ -74,3 +78,4 @@ input, textarea {
 .new-post{
   color:black;
 }
+
