@@ -49,10 +49,10 @@
   display: block;
 }
 
-.new-post input, .new-post textarea {
-    margin: 10px;
+input, textarea {
+    /*margin: 10px;
     width: 1000px;
-    padding: 5px 10px;
+        padding: 5px 10px;*/
 }
 
 .post-title{
@@ -74,13 +74,3 @@
 .new-post{
   color:black;
 }
-
-.btn-group.open .dropdown-toggle, .multiselect.dropdown-toggle{
-      min-width: 200px;
-      text-align: left;
-}
-.multiselect.dropdown-toggle .caret, .btn-group.open .dropdown-toggle .caret{
-right: 10px;
-    top: 14px;
-    position: absolute;
-  }

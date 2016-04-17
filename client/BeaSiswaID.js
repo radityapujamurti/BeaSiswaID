@@ -7,30 +7,29 @@ Template.home.onRendered(function(){
         $('#locationList').multiselect({
           onChange: function(option, checked) {
             var selectedOptions = $('#locationList option:selected').text();
-            Session.set('location', selectedOptions);  
+            console.log(selectedOptions);
+             return Posts.find({location:selectedOptions}, {sort: {createdAt: -1}});
+
         }
       });
     });
 });
 
 Template.home.helpers({
-    filteredPosts: function () {
-      var location = Session.get('location');
-      if((location == "All") || (location == null)){
-         return Posts.find({}, {sort: {createdAt: -1}});    
-      } else {
-         return Posts.find({location: location});
-
-      }
-    },
-    loggedIn: function() {
-      return Meteor.userId();
+    posts: function () {
+    return Posts.find({}, {sort: {createdAt: -1}});    
     }
     
   });
 
 Template.home.events({
-    
+  "change .locationList": function (event){
+    // alert("yo");
+    // event.preventDefault();
+    // var text = event.target.value;
+    // alert(text);
+
+  }
 });
 
 Template.addPostForm.events({
