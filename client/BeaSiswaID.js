@@ -7,8 +7,7 @@ Template.home.onRendered(function(){
         $('#locationList').multiselect({
           onChange: function(option, checked) {
             var selectedOptions = $('#locationList option:selected').text();
-            console.log(selectedOptions);
-             return Posts.find({location:selectedOptions}, {sort: {createdAt: -1}});
+            Session.set('location', selectedOptions);
 
         }
       });
@@ -17,7 +16,11 @@ Template.home.onRendered(function(){
 
 Template.home.helpers({
     posts: function () {
-    return Posts.find({}, {sort: {createdAt: -1}});    
+      if(Session.get('location')){
+            return Posts.find({location:Session.get('location')}, {sort: {createdAt: -1}});    
+      } else {
+            return Posts.find({}, {sort: {createdAt: -1}});    
+      }
     }
     
   });
