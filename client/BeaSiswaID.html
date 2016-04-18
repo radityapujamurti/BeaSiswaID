@@ -48,11 +48,13 @@
     </div>
 <div class="container-fluid bg-2">
   <div class="col-xs-10">
+    {{#if currentUser}}
         <button id="contribute-btn">Contribute!</button>
     <div id="contributeForm" style="display:none">
         <button id="close-btn"><i class="fa fa-close"></i></button>
         {{> addPostForm}}
     </div>
+    {{/if}}
 
     <div class="section-header">
     Scholarship List
