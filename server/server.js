@@ -22,5 +22,13 @@ Meteor.methods({
         verified: isVerified,
         createdAt: new Date() // current time
       });
+  },
+  verifyPost: function(id) {
+    Posts.update(id,{
+          $set: {verified: true}
+    });
+  },
+  deletePost: function(id) {
+    Posts.remove(id);
   }
 });

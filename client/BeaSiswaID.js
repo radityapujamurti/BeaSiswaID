@@ -2,6 +2,21 @@ Posts = new Mongo.Collection("posts");
 
 Meteor.subscribe("posts");
 
+Template.post.events({
+  'click #verify-btn'(){
+    Meteor.call("verifyPost", this._id);   
+  },
+  'click #delete-btn'(){
+    Meteor.call("deletePost", this._id);
+  }
+});
+Template.post.helpers({
+  isAdmin(){
+    return Meteor.userId() == "DAevKXNQH9FcFKdPH";
+  }
+})
+
+
 Template.home.onRendered(function(){
   $(document).ready(function() {
         $('#locationList').multiselect({
@@ -44,16 +59,12 @@ Template.admin.helpers({
     }
     
   });
+Template.admin.onRendered(function(){
+    $(document).ready(function(){
 
-Template.home.events({
-  "change .locationList": function (event){
-    // alert("yo");
-    // event.preventDefault();
-    // var text = event.target.value;
-    // alert(text);
-
-  }
+    })
 });
+
 
 Template.addPostForm.events({
     "submit .new-post": function (event) {
@@ -101,6 +112,14 @@ Meteor.methods({
         verified: isVerified,
         createdAt: new Date() // current time
       });
+  },
+  verifyPost: function(id) {
+    Posts.update(id,{
+          $set: {verified: true}
+    });
+  },
+  deletePost: function(id) {
+    Posts.remove(id);
   }
 });
 

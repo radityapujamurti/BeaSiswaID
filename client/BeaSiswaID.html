@@ -78,6 +78,9 @@
     <span class="post-sub-title">Eligibility: {{eligibility}} | Location: {{location}}</span>
     <p style="margin-top: 10px;">{{description}}</p>  
     <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
+    {{#if isAdmin}}
+     <button id="verify-btn">Verify</button><button id="delete-btn">Delete</button>
+     {{/if}}
     <hr>
   </div>
 </template>
