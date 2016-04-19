@@ -65,7 +65,11 @@ Template.admin.onRendered(function(){
     })
 });
 
-
+Template.addPostForm.onRendered(function(){
+  $(document).ready(function(){
+       $('.datepicker').datepicker();
+    });
+});
 Template.addPostForm.events({
     "submit .new-post": function (event) {
       // Prevent default browser form submit
