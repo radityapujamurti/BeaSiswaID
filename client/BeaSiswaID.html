@@ -49,11 +49,14 @@
 <div class="container-fluid bg-2">
   <div class="col-xs-10">
     {{#if currentUser}}
+      {{#if displayContributeBtn}}
         <button id="contribute-btn">Contribute!</button>
-    <div id="contributeForm" style="display:none">
+      {{else}}
+        <div id="contributeForm">
         <button id="close-btn"><i class="fa fa-close"></i></button>
         {{> addPostForm}}
-    </div>
+        </div>
+      {{/if}}
     {{/if}}
 
     <div class="section-header">

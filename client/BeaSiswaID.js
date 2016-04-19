@@ -26,21 +26,16 @@ Template.home.onRendered(function(){
 
         }
       });
-
-        $('#contribute-btn').click(function() {
-            $('#contributeForm').attr('style','display:block');
-            $('#contribute-btn').attr('style','display:none');
-
-        });
-
-        $('#close-btn').click(function() {
-            $('#contributeForm').attr('style','display:none');
-            $('#contribute-btn').attr('style','display:block');
-
-        });
     });
 });
-
+Template.home.events({
+  'click #contribute-btn'(){
+      Session.set('contributeBtnClicked', false );
+  },
+  'click #close-btn'(){
+      Session.set('contributeBtnClicked', true );
+  },
+})
 Template.home.helpers({
     posts: function () {
       if(Session.get('location')){
@@ -49,6 +44,11 @@ Template.home.helpers({
       } else {
             return Posts.find({verified:true}, {sort: {createdAt: -1}});    
       }
+    },
+    displayContributeBtn(){
+      if(Session.get('contributeBtnClicked') == null)
+        return true;
+      return Session.get('contributeBtnClicked');
     }
     
   });
