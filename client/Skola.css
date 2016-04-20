@@ -1,0 +1,183 @@
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+
+  :focus{
+    outline: none !important;
+  }
+
+  p {font-size: 13px;}
+
+  button, #addFormSubmitBtn{
+        background-color: #dcdcdc;
+    border: none;
+    min-width: 140px;
+    min-height: 45px;
+    padding: 5px;
+    color: #801515;
+    margin: 5px;
+    transition: background-color 0.1s;
+  }
+  button:hover, #addFormSubmitBtn:hover{
+      background-color: #efefef;
+  }
+
+  #contributeSection{
+    position: relative;
+    padding: 20px;
+    background-color: whitesmoke;
+  }
+  #contributeSection p{
+    display: inline;
+    font-size: 18px;
+    margin-left: 30px;
+  }
+
+  #contribute-btn{
+     border-bottom: 5px solid #801515;
+/*     transition: border 0.1s, padding 0.1s;
+*/  }
+  #contribute-btn:hover{
+     background-color: #dcdcdc;
+    padding-top: 7px;
+    border-bottom: 3px solid #801515;
+  }
+  #close-btn{
+        min-width: 50px;
+    position: absolute;
+    right: 10px;
+        margin-top: 0;
+  }
+  #contributeSection input, #contributeSection textarea{
+    display: block;
+    min-width: 900px;
+    margin: 5px 0;
+    padding: 0 10px;
+    border-radius: 0;
+    color: #801515;
+  }
+  #contributeSection [name="location"], #contributeSection .datepicker{
+    min-width:440px;
+    display: inline-block;
+  }
+  #contributeSection .datepicker{
+    margin-left: 15px;
+  }
+  #contributeSection .datepicker{
+    display: inline-block;
+  }
+  #contributeSection #addFormSubmitBtn{
+    min-width: 140px;
+    margin-top: 20px;
+  }
+
+  .btn.multiselect{
+    min-width: 200px;
+    text-align: left;
+    border-radius: 0;
+    border: none;
+  }
+  .btn.multiselect .caret{
+        right: 10px;
+    top: 20px;
+    position: absolute;
+  }
+  .multiselect-container.dropdown-menu{
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    min-width: 200px;
+        padding: 0;
+  }
+  .dropdown-menu > li > a{
+    padding-left: 0;
+  }
+  .multiselect-container>li>a>label{
+    padding: 3px 20px 3px 30px;
+  }
+
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #801515; /* Red */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #ffffff; /* White */
+      color: #801515;
+  }
+  .bg-3 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 16px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .navbar-brand{
+        font-size: 36px;
+  }
+  .navbar-nav  li a:hover {
+      color: #801515 !important;
+  }
+
+  .section-header{
+    font-size: 1.5em;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+
+  #login-dropdown-list{
+        left: -100px;
+  }
+
+.schPost{
+  line-height: 1.2;
+}
+
+.new-post input{
+  color: black;
+  display: block;
+}
+
+input, textarea {
+    /*margin: 10px;
+    width: 1000px;
+        padding: 5px 10px;*/
+}
+
+.post-title{
+  font-size: 1.2em;
+  font-weight: bold; 
+  display: block;
+  margin-bottom: 10px;  
+}
+
+.post-sub-title{
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.locationList{
+  color: black;
+}
+
+.new-post{
+  color:black;
+}
+
+.datepicker {
+  color: #801515;
+  width: 400px;
+}
+

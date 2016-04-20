@@ -4,7 +4,7 @@ Meteor.subscribe("posts");
 
 Template.post.events({
   'click #verify-btn'(){
-    Meteor.call("verifyPost", this._id);
+    Meteor.call("verifyPost", this._id);   
   },
   'click #delete-btn'(){
     Meteor.call("deletePost", this._id);
@@ -16,13 +16,14 @@ Template.post.helpers({
   }
 })
 
+
 Template.home.onRendered(function(){
   $(document).ready(function() {
         $('#locationList').multiselect({
+          includeSelectAllOption: true,
           onChange: function(option, checked) {
             var selectedOptions = $('#locationList option:selected').text();
             Session.set('location', selectedOptions);
-
         }
       });
     });
@@ -38,10 +39,15 @@ Template.home.events({
 Template.home.helpers({
     posts: function () {
       if(Session.get('location')){
-            return Posts.find({location:Session.get('location')},
-                              {verified:true}, {sort: {createdAt: -1}});
-      } else {
-            return Posts.find({verified:true}, {sort: {createdAt: -1}});
+        if(Session.get('location') == 'All'){
+          return Posts.find({verified:true}, {sort: {createdAt: -1}});
+        } else {
+        return Posts.find({location:Session.get('location')},
+                              {verified:true}, {sort: {createdAt: -1}}); 
+        }   
+      }       
+       else {
+            return Posts.find({verified:true}, {sort: {createdAt: -1}});    
       }
     },
     displayContributeBtn(){
@@ -49,14 +55,14 @@ Template.home.helpers({
         return true;
       return Session.get('contributeBtnClicked');
     }
-
+    
   });
 
 Template.admin.helpers({
     posts: function () {
-       return Posts.find({verified:false}, {sort: {createdAt: -1}});
+       return Posts.find({verified:false}, {sort: {createdAt: -1}});    
     }
-
+    
   });
 Template.admin.onRendered(function(){
     $(document).ready(function(){
@@ -80,10 +86,10 @@ Template.addPostForm.events({
       var description = event.target.description.value;
       var location = event.target.location.value;
       var link = event.target.link.value;
-
+ 
       // Insert a task into the collection
       Meteor.call("addPost", title, eligibility, description, location, link);
-
+ 
       // Clear form
       event.target.title.value= "";
       alert("post added!");
@@ -97,31 +103,3 @@ Template.admin.events({
     }
 })
 
-Meteor.methods({
-  addPost: function(title,eligibility,description,location,link) {
-    var isVerified;
-    if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
-      isVerified = true;
-    } else {
-      isVerified = false;
-    }
-    Posts.insert({
-        title: title,
-        eligibility: eligibility,
-        description: description,
-        location: location,
-        link: link,
-        author: Meteor.userId(),
-        verified: isVerified,
-        createdAt: new Date() // current time
-      });
-  },
-  verifyPost: function(id) {
-    Posts.update(id,{
-          $set: {verified: true}
-    });
-  },
-  deletePost: function(id) {
-    Posts.remove(id);
-  }
-});
