@@ -24,24 +24,38 @@
       background-color: #efefef;
   }
 
+  #contribute-btn {
+        display: inline;
+    min-width: 40px;
+    height: 40px;
+    margin: 0;
+  }
   #contributeSection{
-    position: relative;
     padding: 20px;
     background-color: whitesmoke;
+    position: relative;
   }
-  #contributeSection p{
+
+  #addReviewSection{
+    padding: 20px;
+    background-color: whitesmoke;
+    margin-bottom: 15px;
+
+  }
+  #addReviewSection p{
     display: inline;
     font-size: 18px;
     margin-left: 30px;
   }
-
-  #contribute-btn{
+  #addReviewBtn{
      border-bottom: 5px solid #801515;
+         min-width: 200px;
 /*     transition: border 0.1s, padding 0.1s;
 */  }
-  #contribute-btn:hover{
+  #addReviewBtn:hover{
      background-color: #dcdcdc;
     padding-top: 7px;
+        min-width: 200px;
     border-bottom: 3px solid #801515;
   }
   #close-btn{
@@ -132,9 +146,11 @@
   }
 
   .section-header{
-    font-size: 1.5em;
-    margin: 10px 0;
+        font-size: 1.5em;
+    margin: 10px 20px 20px 0;
     font-weight: bold;
+    padding-left: 0;
+    display: inline;
   }
 
   #login-dropdown-list{
@@ -158,7 +174,7 @@ input, textarea {
 
 .post-title{
   font-size: 1.2em;
-  font-weight: bold; 
+  font-weight: normal; 
   display: block;
   margin-bottom: 10px;  
 }

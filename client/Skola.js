@@ -1,6 +1,8 @@
 Posts = new Mongo.Collection("posts");
+Reviews = new Mongo.Collection("reviews");
 
 Meteor.subscribe("posts");
+Meteor.subscribe("reviews");
 
 Template.post.events({
   'click #verify-btn'(){
@@ -35,6 +37,12 @@ Template.home.events({
   'click #close-btn'(){
       Session.set('contributeBtnClicked', true );
   },
+  'click #addReviewBtn'(){
+    Session.set('showAddReview', false);
+  },
+  'click #reviewCloseBtn'(){
+    Session.set('showAddReview', true);
+  }
 })
 Template.home.helpers({
     posts: function () {
@@ -54,9 +62,24 @@ Template.home.helpers({
       if(Session.get('contributeBtnClicked') == null)
         return true;
       return Session.get('contributeBtnClicked');
+    },
+    displayAddReviewBtn(){
+      if(Session.get('showAddReview') == null)
+        return true;
+      return Session.get('showAddReview');
     }
     
   });
+
+Template.reviewArea.helpers({
+    reviews: function(){
+      return Reviews.find({verified:true}, {createdAt: -1});
+    },
+
+});
+Template.reviewArea.events({
+  
+});
 
 Template.admin.helpers({
     posts: function () {
@@ -95,6 +118,24 @@ Template.addPostForm.events({
       alert("post added!");
     }
   });
+Template.addReviewForm.events({
+  "submit .new-review": function (event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+
+      // Get value from form element
+      var title = event.target.title.value;
+      var location = event.target.location.value;
+      var content = event.target.content.value;
+
+      // Insert a task into the collection
+      Meteor.call("addReview", title, location, content);
+ 
+      // Clear form
+      event.target.title.value= "";
+      alert("post added!");
+    }
+})
 
 Template.admin.events({
     "submit .admin-control": function(event){

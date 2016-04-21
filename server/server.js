@@ -1,7 +1,11 @@
 Posts = new Mongo.Collection("posts");
+Reviews = new Mongo.Collection("reviews");
 
 Meteor.publish("posts", function(){
 	return Posts.find({}, {sort: {createdAt: -1}});
+});
+Meteor.publish("reviews", function(){
+  return Reviews.find({}, {sort: {createdAt: -1}});
 });
 
 Meteor.methods({
@@ -22,6 +26,22 @@ Meteor.methods({
         verified: isVerified,
         createdAt: new Date() // current time
       });
+  },
+  addReview: function(title,location,content){
+      var isVerified;
+    if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
+      isVerified = true;
+    } else {
+      isVerified = false;
+    }
+    Reviews.insert({
+        title: title,
+        location: location,
+        content: content,
+        author: Meteor.userId(),
+        verified: isVerified,
+        createdAt: new Date()
+    });
   },
   verifyPost: function(id) {
     Posts.update(id,{

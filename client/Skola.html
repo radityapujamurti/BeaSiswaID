@@ -50,14 +50,14 @@
 <div class="container-fluid bg-2">
   <div class="col-xs-10">
     {{#if currentUser}}
-    <div id="contributeSection">
-      {{#if displayContributeBtn}}
-        <button id="contribute-btn">Contribute!</button>
+    <div id="addReviewSection">
+      {{#if displayAddReviewBtn}}
+        <button id="addReviewBtn">Write Review!</button>
         <p>One contribution can change students's life tremendously!</p>
       {{else}}
-        <div id="contributeForm">
-        <button id="close-btn"><i class="fa fa-close"></i></button>
-        {{> addPostForm}}
+        <div id="addReviewForm">
+        <button id="reviewCloseBtn"><i class="fa fa-close"></i></button>
+        {{> addReviewForm}}
         </div>
       {{/if}}
       </div>
@@ -65,21 +65,42 @@
 
     <div class="section-header">
     Scholarship List
-  </div>
+    </div>
+
+    {{#if currentUser}}
+      {{#if displayContributeBtn}}
+        <button id="contribute-btn"><i class="fa fa-plus" aria-hidden="true"></i></button>
+      {{else}}
+        <div id="contributeSection">
+        <button id="close-btn"><i class="fa fa-close"></i></button>
+        {{> addPostForm}}
+        </div>
+      {{/if}}
+    {{/if}}
+        <br>
+        <hr>
+
     {{#each posts}}
         {{> post}}
       {{/each}}
   </div>
   <div class="col-xs-2">
-    <div class="section-header">
-    Review
-    </div>
-    {{> reviewList}}
-    {{> reviewList}}
-    {{> reviewList}}
+    {{> reviewArea}}
   </div>
 </div>
 </template>
+
+<template name="reviewArea">
+    <div class="col-xs-8 section-header">
+    Reviews
+    </div>
+    <div class="col-xs-4">     
+    </div>
+    {{#each reviews}}
+        {{> reviewItem}}
+    {{/each}}
+</template>
+  
 
 <template name="post"> 
   <div class="schPost">
@@ -94,10 +115,11 @@
   </div>
 </template>
 
-<template name="reviewList">
+<template name="reviewItem">
     <div class="reviewPost">
-      <h3>Review Title</h3>
-    <p>Review Short Details. Lorem ipsum dolor sit amet, purto aperiam repudiare nam ad, sed debet numquam fuisset ne. </p>
+      <h3>{{title}}</h3>
+      <p>{{content}}</p>
+      <p>{{author}}</p>
     </div>   
   </template>
 
