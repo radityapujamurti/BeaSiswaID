@@ -10,18 +10,21 @@
 
   p {font-size: 13px;}
 
-  button, #addFormSubmitBtn{
-        background-color: #dcdcdc;
+  button, #addReviewForm #addFormSubmitBtn,
+  #contributeSection #addFormSubmitBtn{
+    background-color: #801515;
     border: none;
     min-width: 140px;
     min-height: 45px;
     padding: 5px;
-    color: #801515;
+    color: #fff;
     margin: 5px;
-    transition: background-color 0.1s;
+    transition: color 0.2s, background-color 0.2s;
   }
-  button:hover, #addFormSubmitBtn:hover{
-      background-color: #efefef;
+  button:hover,#addReviewForm #addFormSubmitBtn:hover,
+  #contributeSection #addFormSubmitBtn:hover{
+      background-color: #dcdcdc;
+      color: #801515;
   }
 
   #contribute-btn {
@@ -40,31 +43,36 @@
     padding: 20px;
     background-color: whitesmoke;
     margin-bottom: 15px;
+    position: relative;
 
   }
   #addReviewSection p{
     display: inline;
     font-size: 18px;
     margin-left: 30px;
+        position: absolute;
+    top: 40px;
   }
   #addReviewBtn{
-     border-bottom: 5px solid #801515;
+     border-bottom: 5px solid #540909;
          min-width: 200px;
 /*     transition: border 0.1s, padding 0.1s;
 */  }
   #addReviewBtn:hover{
-     background-color: #dcdcdc;
+     background-color: #801515;
+     color: #fff;
     padding-top: 7px;
         min-width: 200px;
-    border-bottom: 3px solid #801515;
+    border-bottom: 3px solid #540909;
   }
-  #close-btn{
+  #close-btn, #reviewCloseBtn{
         min-width: 50px;
     position: absolute;
     right: 10px;
         margin-top: 0;
   }
-  #contributeSection input, #contributeSection textarea{
+  #contributeSection input, #contributeSection textarea,
+  #addReviewForm input, #addReviewForm textarea{
     display: block;
     min-width: 900px;
     margin: 5px 0;
@@ -196,4 +204,4 @@ input, textarea {
   color: #801515;
   width: 400px;
 }
-
+ 

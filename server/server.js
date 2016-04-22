@@ -28,18 +28,12 @@ Meteor.methods({
       });
   },
   addReview: function(title,location,content){
-      var isVerified;
-    if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
-      isVerified = true;
-    } else {
-      isVerified = false;
-    }
     Reviews.insert({
         title: title,
         location: location,
         content: content,
         author: Meteor.userId(),
-        verified: isVerified,
+        verified: false,
         createdAt: new Date()
     });
   },

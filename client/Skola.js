@@ -30,6 +30,7 @@ Template.home.onRendered(function(){
       });
     });
 });
+
 Template.home.events({
   'click #contribute-btn'(){
       Session.set('contributeBtnClicked', false );
@@ -143,4 +144,13 @@ Template.admin.events({
         window.location.href = "/";
     }
 })
+
+Template.reviewItem.onRendered(function(){
+  var temp;
+  $(document).ready(function() {
+    temp = $('.reviewPost .reviewContent').text();
+    temp = temp.substring(0,100);
+    $('.reviewPost .reviewContent').text(temp+ ' ...');
+  })
+});
 
