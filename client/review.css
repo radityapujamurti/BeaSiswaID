@@ -28,14 +28,16 @@
     display: inline;
     font-size: 18px;
     margin-left: 30px;
-        position: absolute;
-    top: 40px;
+    position: absolute;
+    top: 25px;
+    line-height: normal;
   }
   #addReviewBtn{
-     border-bottom: 5px solid #540909;
-         min-width: 200px;
-/*     transition: border 0.1s, padding 0.1s;
-*/  }
+         border-bottom: 5px solid #540909;
+    min-width: 200px;
+    font-size: 18px;
+    min-height: 45px;
+  }
   #addReviewBtn:hover{
      background-color: #801515;
      color: #fff;

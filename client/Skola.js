@@ -100,15 +100,21 @@ Template.reviewArea.events({
 
 Template.admin.helpers({
     posts: function () {
-       return Posts.find({verified:false}, {sort: {createdAt: -1}});    
+       return Posts.find({verified:false});    
+    },
+    reviews: function(){
+      return Reviews.find({verified:false});
     }
     
   });
-Template.admin.onRendered(function(){
-    $(document).ready(function(){
-
-    })
-});
+Template.admin.events({
+    'click .adminVerifyBtn'(){
+      Meteor.call('verifyReview', this._id);
+    },
+    'click .adminDeleteBtn'(){
+      Meteor.call('deleteReview', this._id);
+    },
+  });
 
 Template.addPostForm.onRendered(function(){
   $(document).ready(function(){
@@ -132,7 +138,12 @@ Template.addPostForm.events({
  
       // Clear form
       event.target.title.value= "";
-      alert("post added!");
+      event.target.eligibility.value= "";
+      event.target.description.value= "";
+      event.target.location.value= "";
+      event.target.link.value= "";
+
+      alert("Thank you! Your post will be reviewed.");
     }
   });
 Template.addReviewForm.events({
@@ -151,12 +162,14 @@ Template.addReviewForm.events({
  
       // Clear form
       event.target.title.value= "";
-      alert("post added!");
+      event.target.location.value= "";
+      event.target.content.value= "";
+      alert("Thank you! Your story will be reviewed.");
     }
 })
 
 Template.admin.events({
-    "submit .admin-control": function(event){
+    "click #viewHomeBtn": function(event){
       event.preventDefault();
         window.location.href = "/";
     }

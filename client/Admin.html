@@ -1,21 +1,41 @@
 
   <template name="admin">
-  	<div class="container">
-    <h1 style="color:black;">ADMIN</h1>
+  	<div class="container adminArea">
+    <h1>ADMIN</h1>
     <div id="adminPost" style="display:none;">
             {{> addPostForm}}
     </div>
-    <div id="adminOverview" style="color:black;">
+    <div id="adminOverview">
     <h2>To be reviewed</h2>
+    <div class="col-xs-6">
+        <h3>Posts</h3>
+        <hr>
         {{#each posts}}
         {{> post}}
         {{/each}}
     </div>
+    <div class="col-xs-6">
+        <h3>Reviews</h3>
+        <hr>
+        {{#each reviews}}
+        {{> reviewItemAdmin}}
+        {{/each}}
+    </div>
+    </div>
     </div>
     <form class="admin-control">
-      <input type="submit" class="btn-link" value="View Home" name="goToHomeButton" >
+      <button id="viewHomeBtn"><i class="fa fa-home"></i></button>
     </form>
   </template>
+
+    <template name="reviewItemAdmin">
+        <div class="reviewPostExpanded">
+        <p class="reviewTitle">{{title}}</p>
+        <p class="reviewContent">{{content}}</p>
+        <p>Author: {{author}}</p>
+        <button class="adminVerifyBtn">Verify</button> <button class="adminDeleteBtn">Delete</button>
+    </div> 
+    </template>
 
   <template name="addPostForm">
 

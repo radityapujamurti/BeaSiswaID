@@ -45,5 +45,11 @@ Meteor.methods({
   },
   deletePost: function(id) {
     Posts.remove(id);
+  },
+  verifyReview: function(id){
+    Reviews.update(id,{$set:{verified: true}})
+  },
+  deleteReview: function(id){
+    Reviews.remove(id);
   }
 });
