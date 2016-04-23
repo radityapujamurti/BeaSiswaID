@@ -43,7 +43,13 @@ Template.home.events({
   },
   'click #reviewCloseBtn'(){
     Session.set('showAddReview', true);
-  }
+  },
+  'click .reviewTitle'(){
+    Session.set('reviewIDToBeDisplayed', this._id);
+  },
+  'click #expandedReview-close-btn'(){
+      Session.set('reviewIDToBeDisplayed', null );
+  },
 })
 Template.home.helpers({
     posts: function () {
@@ -58,6 +64,16 @@ Template.home.helpers({
        else {
             return Posts.find({verified:true}, {sort: {createdAt: -1}});    
       }
+    },
+    expandReview: function(){
+      if(Session.get('reviewIDToBeDisplayed')){
+        return true;
+      } else {
+        return false;
+      }
+    },
+    reviews: function(){
+      return Reviews.find({_id:Session.get('reviewIDToBeDisplayed')});
     },
     displayContributeBtn(){
       if(Session.get('contributeBtnClicked') == null)
@@ -150,7 +166,7 @@ Template.reviewItem.onRendered(function(){
   $(document).ready(function() {
     temp = $('.reviewPost .reviewContent').text();
     temp = temp.substring(0,100);
-    $('.reviewPost .reviewContent').text(temp+ ' ...');
+    $('.reviewPost .reviewContent').text(temp+ '...');
   })
 });
 

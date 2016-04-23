@@ -28,49 +28,22 @@
   }
 
   #contribute-btn {
-        display: inline;
+    display: inline;
     min-width: 40px;
-    height: 40px;
+    min-height: 40px;
     margin: 0;
+    font-size: 16px;
+    position: absolute;
+    padding: 0;
   }
   #contributeSection{
     padding: 20px;
     background-color: whitesmoke;
     position: relative;
+        font-size: 14px;
   }
 
-  #addReviewSection{
-    padding: 20px;
-    background-color: whitesmoke;
-    margin-bottom: 15px;
-    position: relative;
-
-  }
-  #addReviewSection p{
-    display: inline;
-    font-size: 18px;
-    margin-left: 30px;
-        position: absolute;
-    top: 40px;
-  }
-  #addReviewBtn{
-     border-bottom: 5px solid #540909;
-         min-width: 200px;
-/*     transition: border 0.1s, padding 0.1s;
-*/  }
-  #addReviewBtn:hover{
-     background-color: #801515;
-     color: #fff;
-    padding-top: 7px;
-        min-width: 200px;
-    border-bottom: 3px solid #540909;
-  }
-  #close-btn, #reviewCloseBtn{
-        min-width: 50px;
-    position: absolute;
-    right: 10px;
-        margin-top: 0;
-  }
+ 
   #contributeSection input, #contributeSection textarea,
   #addReviewForm input, #addReviewForm textarea{
     display: block;

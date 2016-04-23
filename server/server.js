@@ -32,7 +32,7 @@ Meteor.methods({
         title: title,
         location: location,
         content: content,
-        author: Meteor.userId(),
+        author: Meteor.user().profile.name,
         verified: false,
         createdAt: new Date()
     });

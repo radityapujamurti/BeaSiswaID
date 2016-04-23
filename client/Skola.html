@@ -63,6 +63,14 @@
       </div>
     {{/if}}
 
+    {{#if expandReview}}
+        <div id="expandedReviewArea">
+      {{#each reviews}}
+        {{> reviewItemExpanded}}
+      {{/each}}
+          </div>
+    {{/if}}
+
     <div class="section-header">
     Scholarship List
     </div>
@@ -117,6 +125,15 @@
 
 <template name="reviewItem">
     <div class="reviewPost">
+      <p class="reviewTitle"><a href="#">{{title}}</a></p>
+      <p class="reviewContent">{{content}}</p>
+      <p>Author: {{author}}</p>
+    </div>   
+  </template>
+
+  <template name="reviewItemExpanded">
+    <div class="reviewPostExpanded">
+      <button id="expandedReview-close-btn"><i class="fa fa-close"></i></button>
       <p class="reviewTitle">{{title}}</p>
       <p class="reviewContent">{{content}}</p>
       <p>Author: {{author}}</p>
