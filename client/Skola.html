@@ -52,7 +52,7 @@
     {{#if currentUser}}
     <div id="addReviewSection">
       {{#if displayAddReviewBtn}}
-        <button id="addReviewBtn">Write Review!</button>
+        <button id="addReviewBtn">Write a Review!</button>
         <p>One contribution can change students's life tremendously!</p>
       {{else}}
         <div id="addReviewForm">
@@ -101,6 +101,7 @@
 <template name="reviewArea">
     <div class="col-xs-8 section-header">
     Reviews
+    <hr>
     </div>
     <div class="col-xs-4">     
     </div>
@@ -126,7 +127,7 @@
 <template name="reviewItem">
     <div class="reviewPost">
       <p class="reviewTitle"><a href="#">{{title}}</a></p>
-      <p class="reviewContent">{{content}}</p>
+      <p class="reviewContent">{{preview}}</p>
       <p>Author: {{author}}</p>
     </div>   
   </template>

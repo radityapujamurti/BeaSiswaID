@@ -144,9 +144,10 @@ Template.addReviewForm.events({
       var title = event.target.title.value;
       var location = event.target.location.value;
       var content = event.target.content.value;
+      var preview = content.substr(0,100)+'...';
 
       // Insert a task into the collection
-      Meteor.call("addReview", title, location, content);
+      Meteor.call("addReview", title, location, content, preview);
  
       // Clear form
       event.target.title.value= "";
@@ -161,12 +162,4 @@ Template.admin.events({
     }
 })
 
-Template.reviewItem.onRendered(function(){
-  var temp;
-  $(document).ready(function() {
-    temp = $('.reviewPost .reviewContent').text();
-    temp = temp.substring(0,100);
-    $('.reviewPost .reviewContent').text(temp+ '...');
-  })
-});
 

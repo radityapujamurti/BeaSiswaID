@@ -27,11 +27,12 @@ Meteor.methods({
         createdAt: new Date() // current time
       });
   },
-  addReview: function(title,location,content){
+  addReview: function(title,location,content,preview){
     Reviews.insert({
         title: title,
         location: location,
         content: content,
+        preview: preview,
         author: Meteor.user().profile.name,
         verified: false,
         createdAt: new Date()
