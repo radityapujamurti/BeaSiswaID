@@ -41,10 +41,10 @@
   <div class="container-fluid bg-1 text-center">    
   <h2>Find a scholarship!</h2>
       <select class="locationList" id="locationList">
-        <option value="all">All</option>
-        <option value="australia">Australia</option>
-        <option value="singapore">Singapore</option>
-        <option value="uk">United Kingdom</option>
+         <option>All</option>
+        {{#each locationItems}}
+          <option>{{this}}</option>
+        {{/each}}
       </select>  
     </div>
 <div class="container-fluid bg-2">
@@ -53,7 +53,7 @@
     <div id="addReviewSection">
       {{#if displayAddReviewBtn}}
         <button id="addReviewBtn">Write a Review!</button>
-        <p>Sign in with Facebook and write share your story! 
+        <p>Sign in with Facebook and share your story! 
           One story can change students's life tremendously.</p>
       {{else}}
         <div id="addReviewForm">
@@ -97,6 +97,10 @@
     {{> reviewArea}}
   </div>
 </div>
+</template>
+
+<template name="locationOption">
+   <option>{{location}}</option>
 </template>
 
 <template name="reviewArea">

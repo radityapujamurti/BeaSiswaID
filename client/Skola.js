@@ -18,8 +18,7 @@ Template.post.helpers({
   }
 })
 
-
-Template.home.onRendered(function(){
+Template.reviewItem.onRendered(function(){
   $(document).ready(function() {
         $('#locationList').multiselect({
           includeSelectAllOption: true,
@@ -51,7 +50,14 @@ Template.home.events({
       Session.set('reviewIDToBeDisplayed', null );
   },
 })
+
 Template.home.helpers({
+  locationItems: function(){
+  var distinctEntries = _.uniq(Posts.find({verified:true}).fetch().map(function(x){
+    return x.location;
+  }),true);
+  return distinctEntries;
+  },
     posts: function () {
       if(Session.get('location')){
         if(Session.get('location') == 'All'){
@@ -174,5 +180,4 @@ Template.admin.events({
         window.location.href = "/";
     }
 })
-
 
