@@ -30,6 +30,10 @@ Template.reviewItem.onRendered(function(){
     });
 });
 
+Template.addPostForm.onRendered(function(){
+      $("#country").countrySelect();
+})
+
 Template.home.events({
   'click #contribute-btn'(){
       Session.set('contributeBtnClicked', false );

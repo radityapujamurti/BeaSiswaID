@@ -56,9 +56,14 @@
     border-radius: 0;
     color: #801515;
   }
-  #contributeSection [name="location"], #contributeSection .datepicker{
+  #contributeSection #country, #contributeSection .datepicker{
     min-width:440px;
     display: inline-block;
+  }
+  #contributeSection #country{
+    padding-left: 50px;
+  }
+  #contributeSection .flag{
   }
   #contributeSection .datepicker{
     margin-left: 15px;
