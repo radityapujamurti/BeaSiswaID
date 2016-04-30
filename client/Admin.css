@@ -1,17 +1,41 @@
+
+#adminSidebar{
+	position:absolute;
+    top:0; bottom:0; left:0;
+    width:50px;
+    background-color: #2F2F2F;
+    min-height: 600px;
+}
+
 .adminArea{
 	    color: #801515;	  
 	    font-size: 14px;
 	    line-height: normal;  
 	    min-height: 500px;
+	    position: relative;
 }
 
-#viewHomeBtn{
-	    position: fixed;
-    top: 100px;
+.admin-control button,
+.adminSideBtn{
+    position: fixed;
     font-size: larger;
     margin: 0;
     padding: 0;
-    min-width: 45px;
+    min-width: 50px;
+    min-height: 50px;
+    background-color: transparent;
+}
+#viewHomeBtn{
+	top: 100px;
+}
+#viewPostBtn{
+	top: 160px;
+}
+#viewReviewBtn{
+	top: 220px;
+}
+#viewArchiveBtn{
+	top: 280px;
 }
 
 .adminArea p{

@@ -25,6 +25,7 @@ Meteor.methods({
         link: link,
         author: Meteor.userId(),
         verified: isVerified,
+        archive: false,
         createdAt: new Date() // current time
       });
   },
@@ -36,6 +37,7 @@ Meteor.methods({
         preview: preview,
         author: Meteor.user().profile.name,
         verified: false,
+        archive: false,
         createdAt: new Date()
     });
   },
@@ -45,12 +47,32 @@ Meteor.methods({
     });
   },
   deletePost: function(id) {
-    Posts.remove(id);
+    Posts.update(id,{
+          $set: {archive: true}
+    });
   },
   verifyReview: function(id){
     Reviews.update(id,{$set:{verified: true}})
   },
   deleteReview: function(id){
+    Reviews.update(id,{
+          $set: {archive: true}
+        })
+  },
+  recoverPostsArchive: function(id){
+    Posts.update(id,{
+          $set: {archive: false}
+    });
+  },
+  deletePostsArchive: function(id){
+    Posts.remove(id);
+  },
+  recoverReviewsArchive: function(id){
+    Reviews.update(id,{
+          $set: {archive: false}
+    });
+  },
+  deleteReviewsArchive: function(id){
     Reviews.remove(id);
   }
 });

@@ -68,14 +68,17 @@ Template.home.helpers({
     posts: function () {
       if(Session.get('location')){
         if(Session.get('location') == 'All'){
-          return Posts.find({verified:true}, {sort: {createdAt: -1}});
+          return Posts.find({$and: [{verified:true},
+                {archive:false}]}, {sort: {createdAt: -1}});
         } else {
         return Posts.find({location:Session.get('location')},
-                              {verified:true}, {sort: {createdAt: -1}}); 
+                              {$and: [{verified:true},
+                {archive:false}]}, {sort: {createdAt: -1}}); 
         }   
       }       
        else {
-            return Posts.find({verified:true}, {sort: {createdAt: -1}});    
+            return Posts.find({$and: [{verified:true},
+                {archive:false}]}, {sort: {createdAt: -1}});    
       }
     },
     expandReview: function(){
@@ -110,19 +113,70 @@ Template.reviewArea.helpers({
 
 Template.admin.helpers({
     posts: function () {
-       return Posts.find({verified:false});    
+       return Posts.find({
+        $and: [{verified:false},
+                {archive:false}]
+              });    
     },
     reviews: function(){
-      return Reviews.find({verified:false});
+      return Reviews.find({
+        $and: [{verified:false},
+                {archive:false}]
+              }); 
+    },
+    archivePosts: function(){
+      return Posts.find({archive:true});
+    },
+    archiveReviews: function(){
+      return Reviews.find({archive:true});
+    },
+    displayPosts: function(){
+      if(Session.get('adminControl')=='viewPost' || Session.get('adminControl')== null)
+        return true;
+      else
+        return false; 
+    },
+    displayReviews: function(){
+      if(Session.get('adminControl')=='viewReview')
+        return true;
+      else
+        return false; 
+    },
+    displayArchive: function(){
+      if(Session.get('adminControl')=='viewArchive')
+        return true;
+      else
+        return false; 
     }
     
   });
 Template.admin.events({
-    'click .adminVerifyBtn'(){
+    'click #verifyReviewBtn'(){
       Meteor.call('verifyReview', this._id);
     },
-    'click .adminDeleteBtn'(){
+    'click #deleteReviewBtn'(){
       Meteor.call('deleteReview', this._id);
+    },
+    'click #viewReviewBtn'(){
+      Session.set('adminControl', 'viewReview');
+    },
+    'click #viewPostBtn'(){
+      Session.set('adminControl', 'viewPost');
+    },
+    'click #viewArchiveBtn'(){
+      Session.set('adminControl', 'viewArchive');
+    },
+    'click #recoverArchivePostsBtn'(){
+      Meteor.call('recoverPostsArchive', this._id);
+    },
+    'click #deleteArchivePostsBtn'(){
+      Meteor.call('deletePostsArchive', this._id);
+    },
+    'click #recoverArchiveReviewsBtn'(){
+      Meteor.call('recoverReviewsArchive', this._id);
+    },
+    'click #deleteArchiveReviewsBtn'(){
+      Meteor.call('deleteReviewsArchive', this._id);
     },
   });
 

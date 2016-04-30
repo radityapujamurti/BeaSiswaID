@@ -1,31 +1,56 @@
 
   <template name="admin">
-  	<div class="container adminArea">
-    <h1>ADMIN</h1>
+  	<div class="adminArea">
+    <div id="adminSidebar">
+        
+    </div>
+    <div class="container" id="adminContent">
     <div id="adminPost" style="display:none;">
             {{> addPostForm}}
     </div>
     <div id="adminOverview">
     <h2>To be reviewed</h2>
-    <div class="col-xs-6">
+    {{#if displayPosts}}
         <h3>Posts</h3>
         <hr>
         {{#each posts}}
         {{> post}}
         {{/each}}
-    </div>
-    <div class="col-xs-6">
+    {{/if}}
+    {{#if displayReviews}}
         <h3>Reviews</h3>
         <hr>
         {{#each reviews}}
         {{> reviewItemAdmin}}
         {{/each}}
-    </div>
+    {{/if}}
+    {{#if displayArchive}}
+        <h3>Archive</h3>
+        <hr>
+        <div id="archiveArea">
+            <div class="col-xs-6">
+            <h4>Posts</h4>
+            {{#each archivePosts}}
+            {{> archivePostsItemAdmin}}
+            {{/each}}
+            </div>
+            <div class="col-xs-6">
+            <h4>Reviews</h4>
+            {{#each archiveReviews}}
+            {{> archiveReviewsItemAdmin}}
+            {{/each}}
+            </div>
+        </div>
+    {{/if}}
     </div>
     </div>
     <form class="admin-control">
-      <button id="viewHomeBtn"><i class="fa fa-home"></i></button>
+      <button title="View home" id="viewHomeBtn"><i class="fa fa-home"></i></button>
     </form>
+        <button class="adminSideBtn" title="View reviews" id="viewReviewBtn"><i class="fa fa-newspaper-o"></i></button>
+      <button class="adminSideBtn" title="View posts" id="viewPostBtn"><i class="fa fa-pencil"></i></button>    
+      <button class="adminSideBtn" title="View archives" id="viewArchiveBtn"><i class="fa fa-archive"></i></button> 
+    </div>
   </template>
 
     <template name="reviewItemAdmin">
@@ -33,7 +58,29 @@
         <p class="reviewTitle">{{title}}</p>
         <p class="reviewContent">{{content}}</p>
         <p>Author: {{author}}</p>
-        <button class="adminVerifyBtn">Verify</button> <button class="adminDeleteBtn">Delete</button>
+        <button class="adminVerifyBtn" id="verifyReviewBtn">Verify</button> 
+        <button class="adminDeleteBtn" id="deleteReviewBtn">Delete</button>
+    </div> 
+    </template>
+
+    <template name="archivePostsItemAdmin">
+        <div class="">
+        <p class="">{{title}}</p>
+        <p class="">{{description}}</p>
+        <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
+        <p>Author: {{author}}</p>
+        <button class="adminVerifyBtn" id="recoverArchivePostsBtn">Recover</button> 
+        <button class="adminDeleteBtn" id="deleteArchivePostsBtn">Delete</button>
+    </div> 
+    </template>
+
+    <template name="archiveReviewsItemAdmin">
+        <div class="">
+        <p class="">{{title}}</p>
+        <p class="">{{content}}</p>
+        <p>Author: {{author}}</p>
+        <button class="adminVerifyBtn" id="recoverArchiveReviewsBtn">Recover</button> 
+        <button class="adminDeleteBtn" id="deleteArchiveReviewsBtn">Delete</button>
     </div> 
     </template>
 
