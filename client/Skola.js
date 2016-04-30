@@ -31,8 +31,11 @@ Template.reviewItem.onRendered(function(){
 });
 
 Template.addPostForm.onRendered(function(){
-      $("#country").countrySelect();
-})
+  $(".new-post #country").countrySelect();
+});
+Template.addReviewForm.onRendered(function(){
+  $(".new-review #country").countrySelect();
+});
 
 Template.home.events({
   'click #contribute-btn'(){
@@ -104,9 +107,6 @@ Template.reviewArea.helpers({
     },
 
 });
-Template.reviewArea.events({
-  
-});
 
 Template.admin.helpers({
     posts: function () {
@@ -131,6 +131,7 @@ Template.addPostForm.onRendered(function(){
        $('.datepicker').datepicker();
     });
 });
+
 Template.addPostForm.events({
     "submit .new-post": function (event) {
       // Prevent default browser form submit
@@ -140,20 +141,23 @@ Template.addPostForm.events({
       var title = event.target.title.value;
       var eligibility = event.target.eligibility.value;
       var description = event.target.description.value;
+      var deadline = event.target.deadline.value;
       var location = event.target.location.value;
       var link = event.target.link.value;
  
       // Insert a task into the collection
-      Meteor.call("addPost", title, eligibility, description, location, link);
+      Meteor.call("addPost", title, eligibility, description, deadline, location, link);
  
       // Clear form
       event.target.title.value= "";
       event.target.eligibility.value= "";
       event.target.description.value= "";
+      event.target.deadline.value= "";
       event.target.location.value= "";
       event.target.link.value= "";
 
       alert("Thank you! Your post will be reviewed.");
+
     }
   });
 Template.addReviewForm.events({

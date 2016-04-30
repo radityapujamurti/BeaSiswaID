@@ -9,7 +9,7 @@ Meteor.publish("reviews", function(){
 });
 
 Meteor.methods({
-  addPost: function(title,eligibility,description,location,link) {
+  addPost: function(title,eligibility,description,deadline,location,link) {
     var isVerified;
     if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
       isVerified = true;
@@ -20,6 +20,7 @@ Meteor.methods({
         title: title,
         eligibility: eligibility,
         description: description,
+        deadline: deadline,
         location: location,
         link: link,
         author: Meteor.userId(),
