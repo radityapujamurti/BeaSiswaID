@@ -60,7 +60,8 @@ Template.home.events({
 
 Template.home.helpers({
   locationItems: function(){
-  var distinctEntries = _.uniq(Posts.find({verified:true}).fetch().map(function(x){
+  var distinctEntries = _.uniq(Posts.find({$and: [{verified:true},
+                {archive:false}]}).fetch().map(function(x){
     return x.location;
   }),true);
   return distinctEntries;
@@ -71,9 +72,11 @@ Template.home.helpers({
           return Posts.find({$and: [{verified:true},
                 {archive:false}]}, {sort: {createdAt: -1}});
         } else {
-        return Posts.find({location:Session.get('location')},
-                              {$and: [{verified:true},
-                {archive:false}]}, {sort: {createdAt: -1}}); 
+        return Posts.find(
+                {$and: [{verified:true},
+                {location:Session.get('location')},
+                {archive:false}]}, 
+                {sort: {createdAt: -1}}); 
         }   
       }       
        else {

@@ -17,19 +17,31 @@
 	line-height: normal;
 }
 
- #addReviewSection{
+ #addReviewSection, #landingPageDesc{
     padding: 20px;
     background-color: whitesmoke;
     margin-bottom: 15px;
     position: relative;
-
+  }
+  #landingPageDesc p{
+    font-size: 18px;
+    line-height: normal;
+    display: inline-block;
+    margin: 0;
+    margin-left: 90px;
+  }
+  #landingPageDesc i{
+    display: inline-block;
+    position: absolute;
+    font-size: 60px;
+    top: 30px;
   }
   #addReviewSection p{
     display: inline;
     font-size: 18px;
     margin-left: 30px;
     position: absolute;
-    top: 25px;
+    top: 15px;
     line-height: normal;
   }
   #addReviewBtn{

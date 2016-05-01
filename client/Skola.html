@@ -53,8 +53,9 @@
     <div id="addReviewSection">
       {{#if displayAddReviewBtn}}
         <button id="addReviewBtn">Write a Review!</button>
-        <p>Sign in with Facebook and share your story! 
-          One story can change students's life tremendously.</p>
+        <p>Share your story! It can be about your experience in studying overseas,
+          tips or tricks on how to get scholarship, etc. 
+          One story can change many students's life tremendously.</p>
       {{else}}
         <div id="addReviewForm">
         <button id="reviewCloseBtn"><i class="fa fa-close"></i></button>
@@ -62,6 +63,14 @@
         </div>
       {{/if}}
       </div>
+    {{else}}
+    <div id="landingPageDesc">
+      <i class="fa fa-mortar-board"></i>
+      <p>Skola is a community that connects students who are looking for a scholarship and those who know
+      any information about scholarship available. It is a one stop platform for scholarship, so that you do not have to spend too much time in finding the right scholarship for you. <br><br>
+      Sign up with Facebook to enjoy the complete features of this application!
+      </p>
+    </div>
     {{/if}}
 
     {{#if expandReview}}
