@@ -1,8 +1,10 @@
 Posts = new Mongo.Collection("posts");
 Reviews = new Mongo.Collection("reviews");
+Admins = new Mongo.Collection("admins");
 
 Meteor.subscribe("posts");
 Meteor.subscribe("reviews");
+Meteor.subscribe("admins");
 
 Template.post.events({
   'click #verify-btn'(){
@@ -10,11 +12,28 @@ Template.post.events({
   },
   'click #delete-btn'(){
     Meteor.call("deletePost", this._id);
-  }
+  },
+  'click #likeBtn'(){
+    Meteor.call("likePost", this._id);
+  },
+  'click #dislikeBtn'(){
+    Meteor.call("dislikePost", this._id);
+  },
 });
 Template.post.helpers({
-  isAdmin(){
-    return Meteor.userId() == "DAevKXNQH9FcFKdPH";
+  isAdmin: function(){
+    Meteor.call("initAdmin");
+    if(Admins.find({name:Meteor.user().profile.name})){
+      return true;
+    }
+    else
+      return false;
+  },
+  likeCount: function(){
+      return this.likers.length
+  },
+  dislikeCount: function(){
+      return this.dislikers.length
   }
 })
 
@@ -83,25 +102,24 @@ Template.home.helpers({
   },
     posts: function () {
       var tabMode = Session.get('tabMode');
-
       if(tabMode == 'popular' ){
         if(Session.get('location')){
             if(Session.get('location') == 'All'){
               return Posts.find(
                     {$and: [
                             {archive:false}]}, 
-                    {sort: {like: -1}});
+                    {sort: {likersCount: -1}});
             } else {
             return Posts.find(
                     {$and: [
                     {location:Session.get('location')},
                     {archive:false}]}, 
-                    {sort: {like: -1}}); 
+                    {sort: {likersCount: -1}}); 
             }   
           }       
         else {
               return Posts.find({$and: [
-                  {archive:false}]}, {sort: {like: -1}});    
+                  {archive:false}]}, {sort: {likersCount: -1}});    
         }
       } 
       else if(tabMode == 'fresh') {

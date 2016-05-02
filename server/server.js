@@ -1,5 +1,6 @@
 Posts = new Mongo.Collection("posts");
 Reviews = new Mongo.Collection("reviews");
+Admins = new Mongo.Collection("admins");
 
 Meteor.publish("posts", function(){
 	return Posts.find({}, {sort: {createdAt: -1}});
@@ -7,8 +8,23 @@ Meteor.publish("posts", function(){
 Meteor.publish("reviews", function(){
   return Reviews.find({}, {sort: {createdAt: -1}});
 });
+Meteor.publish("admins", function(){
+  return Admins.find();
+});
 
 Meteor.methods({
+  initAdmin: function(){
+      if(Admins.find({})){
+        return;
+      } else {
+        Admins.insert({
+          name: 'Made Raditya Pujamurti'
+        });
+        Admins.insert({
+          name: 'Byan'
+        });
+      }
+  },
   addPost: function(title,eligibility,description,deadline,location,link) {
     var isVerified;
     if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
@@ -25,6 +41,9 @@ Meteor.methods({
         link: link,
         author: Meteor.user().profile.name,
         verified: isVerified,
+        likers: [],
+        dislikers: [],
+        likersCount: 0,
         archive: false,
         createdAt: new Date() // current time
       });
@@ -37,6 +56,8 @@ Meteor.methods({
         preview: preview,
         author: Meteor.user().profile.name,
         verified: false,
+        likers: [],
+        dislikers: [],
         archive: false,
         createdAt: new Date()
     });
@@ -74,5 +95,68 @@ Meteor.methods({
   },
   deleteReviewsArchive: function(id){
     Reviews.remove(id);
-  }
+  },
+  likePost: function(postId) {    
+    var post = Posts.findOne(postId);
+    //if the user already in a disliker array
+    if (post.dislikers && _.contains(post.dislikers, this.userId)) {
+      Posts.update({      
+          _id: postId
+        },
+        {
+          $pull: { //remove the same liker from the array
+            dislikers: this.userId
+          },
+          $addToSet: {
+            likers: this.userId
+          }
+        })
+    }  
+    else{
+        Posts.update({
+          _id: postId
+        }, {$addToSet: {
+          likers: this.userId
+        }
+      })
+    }
+
+    if(_.contains(post.likers, this.userId)){
+        //do not update the like count
+    } else {
+      Posts.update({
+          _id: postId },
+          {$inc : {likersCount: 1}})
+    }
+  },
+
+  dislikePost: function(postId) {    
+    var post = Posts.findOne(postId);
+    //if the user already in a liker array
+    if (post.likers && _.contains(post.likers, this.userId)) {
+      Posts.update({      
+          _id: postId
+        },
+        {
+          $pull: { //remove the disliker from the array
+            likers: this.userId
+          },
+          $addToSet: {
+            dislikers: this.userId
+          }
+        });
+
+      Posts.update({
+          _id: postId },
+          {$inc : {likersCount: -1}});
+    }
+    else{
+      Posts.update({
+        _id: postId
+      }, {$addToSet: {
+        dislikers: this.userId
+        }
+      });
+    }
+  },
 });

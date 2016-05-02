@@ -141,10 +141,10 @@
     {{#if isAdmin}}
      <button id="verify-btn">Verify</button><button id="delete-btn">Delete</button>         
     {{/if}}
-    <button class="userRatingBtn"><i class="fa fa-thumbs-o-up"></i></button>
-    <span class="ratingSpan">{{like}}</span>
-    <button class="userRatingBtn"><i class="fa fa-thumbs-o-down"></i></button>
-    <span class="ratingSpan">{{dislike}}</span>
+    <button class="userRatingBtn" id="likeBtn"><i class="fa fa-thumbs-o-up"></i></button>
+    <span class="ratingSpan">{{likeCount}}</span>
+    <button class="userRatingBtn" id="dislikeBtn"><i class="fa fa-thumbs-o-down"></i></button>
+    <span class="ratingSpan">{{dislikeCount}}</span>
     <i class="fa fa-user"></i><span class="ratingAuthorSpan">{{author}}</span>
     <hr>
   </div>
