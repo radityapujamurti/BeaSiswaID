@@ -56,6 +56,21 @@ Template.home.events({
   'click #expandedReview-close-btn'(){
       Session.set('reviewIDToBeDisplayed', null );
   },
+  'click #verifiedTabBtn'(){
+    Session.set('tabMode', 'verified');
+    $('#tabstripNav li').removeClass('active');
+    $('#verifiedTabBtn').addClass('active');
+  },
+  'click #popularTabBtn'(){
+    Session.set('tabMode', 'popular');
+    $('#tabstripNav li').removeClass('active');
+    $('#popularTabBtn').addClass('active');
+  },
+  'click #freshTabBtn'(){
+    Session.set('tabMode', 'fresh');
+    $('#tabstripNav li').removeClass('active');
+    $('#freshTabBtn').addClass('active');
+  },
 })
 
 Template.home.helpers({
@@ -67,21 +82,67 @@ Template.home.helpers({
   return distinctEntries;
   },
     posts: function () {
-      if(Session.get('location')){
-        if(Session.get('location') == 'All'){
-          return Posts.find({$and: [{verified:true},
-                {archive:false}]}, {sort: {createdAt: -1}});
-        } else {
-        return Posts.find(
-                {$and: [{verified:true},
-                {location:Session.get('location')},
-                {archive:false}]}, 
-                {sort: {createdAt: -1}}); 
-        }   
-      }       
-       else {
-            return Posts.find({$and: [{verified:true},
-                {archive:false}]}, {sort: {createdAt: -1}});    
+      var tabMode = Session.get('tabMode');
+
+      if(tabMode == 'popular' ){
+        if(Session.get('location')){
+            if(Session.get('location') == 'All'){
+              return Posts.find(
+                    {$and: [
+                            {archive:false}]}, 
+                    {sort: {like: -1}});
+            } else {
+            return Posts.find(
+                    {$and: [
+                    {location:Session.get('location')},
+                    {archive:false}]}, 
+                    {sort: {like: -1}}); 
+            }   
+          }       
+        else {
+              return Posts.find({$and: [
+                  {archive:false}]}, {sort: {like: -1}});    
+        }
+      } 
+      else if(tabMode == 'fresh') {
+          if(Session.get('location')){
+            if(Session.get('location') == 'All'){
+              return Posts.find(
+                    {$and: [
+                            {archive:false}]}, 
+                    {sort: {createdAt: -1}});
+            } else {
+            return Posts.find(
+                    {$and: [
+                    {location:Session.get('location')},
+                    {archive:false}]}, 
+                    {sort: {createdAt: -1}}); 
+            }   
+          }       
+        else {
+              return Posts.find({$and: [
+                  {archive:false}]}, {sort: {createdAt: -1}});    
+        }
+      }
+      else { //verified
+        if(Session.get('location')){
+            if(Session.get('location') == 'All'){
+              return Posts.find(
+                    {$and: [{verified:true},
+                            {archive:false}]}, 
+                    {sort: {createdAt: -1}});
+            } else {
+            return Posts.find(
+                    {$and: [{verified:true},
+                    {location:Session.get('location')},
+                    {archive:false}]}, 
+                    {sort: {createdAt: -1}}); 
+            }   
+          }       
+        else {
+              return Posts.find({$and: [{verified:true},
+                  {archive:false}]}, {sort: {createdAt: -1}});    
+        }
       }
     },
     expandReview: function(){
@@ -114,135 +175,6 @@ Template.reviewArea.helpers({
 
 });
 
-Template.admin.helpers({
-    posts: function () {
-       return Posts.find({
-        $and: [{verified:false},
-                {archive:false}]
-              });    
-    },
-    reviews: function(){
-      return Reviews.find({
-        $and: [{verified:false},
-                {archive:false}]
-              }); 
-    },
-    archivePosts: function(){
-      return Posts.find({archive:true});
-    },
-    archiveReviews: function(){
-      return Reviews.find({archive:true});
-    },
-    displayPosts: function(){
-      if(Session.get('adminControl')=='viewPost' || Session.get('adminControl')== null)
-        return true;
-      else
-        return false; 
-    },
-    displayReviews: function(){
-      if(Session.get('adminControl')=='viewReview')
-        return true;
-      else
-        return false; 
-    },
-    displayArchive: function(){
-      if(Session.get('adminControl')=='viewArchive')
-        return true;
-      else
-        return false; 
-    }
-    
-  });
-Template.admin.events({
-    'click #verifyReviewBtn'(){
-      Meteor.call('verifyReview', this._id);
-    },
-    'click #deleteReviewBtn'(){
-      Meteor.call('deleteReview', this._id);
-    },
-    'click #viewReviewBtn'(){
-      Session.set('adminControl', 'viewReview');
-    },
-    'click #viewPostBtn'(){
-      Session.set('adminControl', 'viewPost');
-    },
-    'click #viewArchiveBtn'(){
-      Session.set('adminControl', 'viewArchive');
-    },
-    'click #recoverArchivePostsBtn'(){
-      Meteor.call('recoverPostsArchive', this._id);
-    },
-    'click #deleteArchivePostsBtn'(){
-      Meteor.call('deletePostsArchive', this._id);
-    },
-    'click #recoverArchiveReviewsBtn'(){
-      Meteor.call('recoverReviewsArchive', this._id);
-    },
-    'click #deleteArchiveReviewsBtn'(){
-      Meteor.call('deleteReviewsArchive', this._id);
-    },
-  });
 
-Template.addPostForm.onRendered(function(){
-  $(document).ready(function(){
-       $('.datepicker').datepicker();
-    });
-});
 
-Template.addPostForm.events({
-    "submit .new-post": function (event) {
-      // Prevent default browser form submit
-      event.preventDefault();
-
-      // Get value from form element
-      var title = event.target.title.value;
-      var eligibility = event.target.eligibility.value;
-      var description = event.target.description.value;
-      var deadline = event.target.deadline.value;
-      var location = event.target.location.value;
-      var link = event.target.link.value;
- 
-      // Insert a task into the collection
-      Meteor.call("addPost", title, eligibility, description, deadline, location, link);
- 
-      // Clear form
-      event.target.title.value= "";
-      event.target.eligibility.value= "";
-      event.target.description.value= "";
-      event.target.deadline.value= "";
-      event.target.location.value= "";
-      event.target.link.value= "";
-
-      alert("Thank you! Your post will be reviewed.");
-
-    }
-  });
-Template.addReviewForm.events({
-  "submit .new-review": function (event) {
-      // Prevent default browser form submit
-      event.preventDefault();
-
-      // Get value from form element
-      var title = event.target.title.value;
-      var location = event.target.location.value;
-      var content = event.target.content.value;
-      var preview = content.substr(0,100)+'...';
-
-      // Insert a task into the collection
-      Meteor.call("addReview", title, location, content, preview);
- 
-      // Clear form
-      event.target.title.value= "";
-      event.target.location.value= "";
-      event.target.content.value= "";
-      alert("Thank you! Your story will be reviewed.");
-    }
-})
-
-Template.admin.events({
-    "click #viewHomeBtn": function(event){
-      event.preventDefault();
-        window.location.href = "/";
-    }
-})
 

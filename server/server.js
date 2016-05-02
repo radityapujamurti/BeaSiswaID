@@ -23,7 +23,7 @@ Meteor.methods({
         deadline: deadline,
         location: location,
         link: link,
-        author: Meteor.userId(),
+        author: Meteor.user().profile.name,
         verified: isVerified,
         archive: false,
         createdAt: new Date() // current time

@@ -96,7 +96,14 @@
       {{/if}}
     {{/if}}
         <br>
-        <hr>
+
+    <div id="tabstripNav">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active" id="verifiedTabBtn"><a href="#">Verified</a></li>
+        <li role="presentation" id="popularTabBtn"><a href="#">Popular</a></li>
+        <li role="presentation" id="freshTabBtn"><a href="#">Fresh</a></li>
+      </ul>
+    </div>
 
     {{#each posts}}
         {{> post}}
@@ -132,8 +139,13 @@
     <p style="margin-top: 10px;">{{description}}</p>  
     <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
     {{#if isAdmin}}
-     <button id="verify-btn">Verify</button><button id="delete-btn">Delete</button>
-     {{/if}}
+     <button id="verify-btn">Verify</button><button id="delete-btn">Delete</button>         
+    {{/if}}
+    <button class="userRatingBtn"><i class="fa fa-thumbs-o-up"></i></button>
+    <span class="ratingSpan">{{like}}</span>
+    <button class="userRatingBtn"><i class="fa fa-thumbs-o-down"></i></button>
+    <span class="ratingSpan">{{dislike}}</span>
+    <i class="fa fa-user"></i><span class="ratingAuthorSpan">{{author}}</span>
     <hr>
   </div>
 </template>

@@ -192,3 +192,25 @@ input, textarea {
   width: 400px;
 }
  
+#tabstripNav{
+  margin-bottom: 20px;
+}
+
+.userRatingBtn{
+  background-color: transparent;
+  min-width: 35px;
+      margin: 0;
+}
+.userRatingBtn i{
+  font-size: 20px;
+      color: #801515;
+}
+.ratingSpan{
+  margin-left: -5px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.ratingAuthorSpan{
+  font-size: 16px;
+      margin-left: 5px;
+}
