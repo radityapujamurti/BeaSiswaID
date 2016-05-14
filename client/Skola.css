@@ -24,7 +24,6 @@
     min-height: 25px;
     padding: 5px;
     color: #fff;
-    margin: 5px;
     transition: color 0.2s, background-color 0.2s;
     font-size: 12px;
   }
@@ -80,6 +79,11 @@
   #contributeSection #addFormSubmitBtn{
     min-width: 140px;
     margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  #verify-btn, #delete-btn{
+    margin: 0 5px;
   }
 
   .btn.multiselect{
@@ -194,6 +198,7 @@ input, textarea {
  
 #tabstripNav{
   margin-bottom: 20px;
+      margin-top: 10px;
 }
 
 .userRatingBtn{
@@ -213,4 +218,23 @@ input, textarea {
 .ratingAuthorSpan{
   font-size: 16px;
       margin-left: 5px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+      border-radius: 0;
+     color: #fff;
+    background-color: #801515;
+    border-color: transparent;
+}
+.nav-tabs > li > a{
+      border-radius: 0;
+     color: #801515;
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-transition: background-color  0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color  0.3s ;
+}
+.nav-tabs > li > a:hover{
+      border-color: transparent;
 }

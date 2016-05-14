@@ -58,10 +58,10 @@
     border-bottom: 3px solid #540909;
   }
   #close-btn, #reviewCloseBtn{
-        min-width: 50px;
+    min-width: 40px;
     position: absolute;
-    right: 10px;
-        margin-top: 0;
+    right: 20px;
+    margin-top: 0;
   }
 
 #expandedReviewArea{
