@@ -1,6 +1,8 @@
 Template.addPostForm.onRendered(function(){
   $(document).ready(function(){
-       $('.datepicker').datepicker();
+       $('.datepicker').datepicker({
+         minDate:Date.now,
+       });
     });
 });
 
