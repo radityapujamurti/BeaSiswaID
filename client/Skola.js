@@ -37,24 +37,26 @@ Template.post.helpers({
   }
 })
 
-Template.reviewItem.onRendered(function(){
-  $(document).ready(function() {
-        $('#locationList').multiselect({
-          includeSelectAllOption: true,
-          onChange: function(option, checked) {
-            var selectedOptions = $('#locationList option:selected').text();
-            Session.set('location', selectedOptions);
-        }
-      });
-    });
-});
+Template.reviewItem.rendered = function(){
+    $('#locationList').multiselect({
+      includeSelectAllOption: true,
+      onChange: function(option, checked) {
+        var selectedOptions = $('#locationList option:selected').text();
+        Session.set('location', selectedOptions);
+    }
+  });
+}
 
-Template.addPostForm.onRendered(function(){
+Template.addPostForm.rendered = function(){
   $(".new-post #country").countrySelect();
-});
-Template.addReviewForm.onRendered(function(){
+  $(this.find('[data-toggle="tooltip"]')).tooltip();
+  $('.datepicker').datepicker({
+          // startDate:new Date().getDate
+       }); 
+} 
+Template.addReviewForm.rendered = function(){
   $(".new-review #country").countrySelect();
-});
+}
 
 Template.home.events({
   'click #contribute-btn'(){

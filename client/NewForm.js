@@ -1,10 +1,3 @@
-Template.addPostForm.onRendered(function(){
-  $(document).ready(function(){
-       $('.datepicker').datepicker({
-          // startDate:new Date().getDate
-       });
-    });
-});
 
 Template.addPostForm.events({
     "submit .new-post": function (event) {
