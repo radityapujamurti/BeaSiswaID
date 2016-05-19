@@ -4,7 +4,7 @@ Router.route('/admin', {
     template: 'admin',
     onBeforeAction: function(){
         var currentUser = Meteor.userId();
-        if(currentUser == "DAevKXNQH9FcFKdPH"){
+        if(currentUser == "TWFHrTkLYzeYDdp88"){
             this.next();
         } else {
             this.render("home");
