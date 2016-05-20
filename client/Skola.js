@@ -53,6 +53,7 @@ Template.reviewItem.rendered = function(){
       onChange: function(option, checked) {
         var selectedOptions = $('#locationList option:selected').text();
         Session.set('location', selectedOptions);
+        $("body, html").animate({ scrollTop: $("#tabstripNav").offset().top + 'px' }, 'medium');
     }
   });
 }
