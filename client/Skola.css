@@ -5,6 +5,10 @@
   margin-top: 10px !important;
 }
 
+.nav.nav-tabs{
+  font-size: 18px;
+}
+
   footer{
   display: none;
 }
