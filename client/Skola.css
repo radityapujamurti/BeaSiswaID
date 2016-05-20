@@ -292,5 +292,8 @@ input, textarea {
       top: -5px !important;
       right: 0 !important;
     }
-
+    
+    .schPost p{
+      overflow: hidden !important;
+    }
 }
