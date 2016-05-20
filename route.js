@@ -3,6 +3,7 @@ Router.route('/admin', {
     name: 'Admin',
     template: 'admin',
     onBeforeAction: function(){
+        //localhost: "DAevKXNQH9FcFKdPH"
         var currentUser = Meteor.userId();
         if(currentUser == "TWFHrTkLYzeYDdp88"){
             this.next();
