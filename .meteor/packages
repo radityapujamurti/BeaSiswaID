@@ -19,7 +19,6 @@ iron:router
 emdagon:bootstrap-multiselect
 accounts-facebook
 accounts-ui
-accounts-password
 meteortoys:allthings
 fortawesome:fontawesome
 standard-minifier-css

@@ -1,3 +1,10 @@
+#login-buttons-facebook,
+#login-buttons-logout{
+  border-radius: 0 !important;
+  border-color: transparent !important;
+  margin-top: 10px !important;
+}
+
   footer{
   display: none;
 }

@@ -14,10 +14,20 @@ Template.post.events({
     Meteor.call("deletePost", this._id);
   },
   'click #likeBtn'(){
-    Meteor.call("likePost", this._id);
+    var user= Meteor.user();
+    if(!user){
+      return
+    } else {
+      Meteor.call("likePost", this._id);
+    }
   },
   'click #dislikeBtn'(){
-    Meteor.call("dislikePost", this._id);
+    var user= Meteor.user();
+    if(!user){
+      return
+    } else {
+      Meteor.call("dislikePost", this._id);
+    }
   },
 });
 Template.post.helpers({
@@ -29,7 +39,7 @@ Template.post.helpers({
     else
       return false;
   },
-  likeCount: function(){
+  likeCount: function(){    
       return this.likers.length
   },
   dislikeCount: function(){

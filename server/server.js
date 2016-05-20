@@ -27,7 +27,7 @@ Meteor.methods({
   },
   addPost: function(title,eligibility,description,deadline,location,link) {
     var isVerified;
-    if(Meteor.userId() == 'DAevKXNQH9FcFKdPH'){
+    if(Meteor.userId() == 'TWFHrTkLYzeYDdp88'){
       isVerified = true;
     } else {
       isVerified = false;
