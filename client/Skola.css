@@ -5,6 +5,11 @@
   margin-top: 10px !important;
 }
 
+.login-display-name{
+    color: #5E5E5E;
+    font-family: Montserrat;
+}
+
 .nav.nav-tabs{
   font-size: 18px;
 }
