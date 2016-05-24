@@ -64,7 +64,10 @@ Template.reviewItem.rendered = function(){
 }
 
 Template.addPostForm.rendered = function(){
-  $(".new-post #country").countrySelect();
+  $(".new-post #country").countrySelect({
+    "defaultCountry": "id",
+    "preferredCountries": ["id"]
+  });
   $(this.find('[data-toggle="tooltip"]')).tooltip();
   
   //disable the past dates
