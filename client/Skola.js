@@ -66,9 +66,15 @@ Template.reviewItem.rendered = function(){
 Template.addPostForm.rendered = function(){
   $(".new-post #country").countrySelect();
   $(this.find('[data-toggle="tooltip"]')).tooltip();
+  
+  //disable the past dates
+  var nowTemp = new Date();
+  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
   $('.datepicker').datepicker({
-          // startDate:new Date().getDate
-       }); 
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+  });
 } 
 Template.addReviewForm.rendered = function(){
   $(".new-review #country").countrySelect();
