@@ -52,7 +52,7 @@
   }
 
   #contribute-btn {
-        display: inline;
+    display: inline;
     min-width: 40px;
     min-height: 30px;
     margin: 0;
@@ -65,7 +65,7 @@
     padding: 20px;
     background-color: whitesmoke;
     position: relative;
-        font-size: 14px;
+    font-size: 14px;
   }
 
  

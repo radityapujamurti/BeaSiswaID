@@ -21,7 +21,7 @@ Template.post.events({
   'click #likeBtn'(){
     var user= Meteor.user();
     if(!user){
-      return
+      alert('Please log in with Facebook');
     } else {
       Meteor.call("likePost", this._id);
     }
@@ -29,7 +29,7 @@ Template.post.events({
   'click #dislikeBtn'(){
     var user= Meteor.user();
     if(!user){
-      return
+      alert('Please log in with Facebook');
     } else {
       Meteor.call("dislikePost", this._id);
     }
