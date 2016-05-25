@@ -48,6 +48,19 @@ Meteor.methods({
         createdAt: new Date() // current time
       });
   },
+  editPost: function(id,title,eligibility,description,deadline,location,link){
+
+    Posts.update(id,{
+          $set: {
+            title: title,
+            eligibility: eligibility,
+            description: description,
+            deadline: deadline,
+            location: location,
+            link: link
+          }
+    });
+  },
   addReview: function(title,location,content,preview){
     Reviews.insert({
         title: title,

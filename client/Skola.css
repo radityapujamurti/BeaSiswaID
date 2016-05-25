@@ -35,7 +35,8 @@
   }
 
   button, #addReviewForm #addFormSubmitBtn,
-  #contributeSection #addFormSubmitBtn{
+  #contributeSection #addFormSubmitBtn,
+  #editPostSubmitBtn{
         background-color: #801515;
     border: none;
     min-width: 80px;
@@ -46,7 +47,8 @@
     font-size: 12px;
   }
   button:hover,#addReviewForm #addFormSubmitBtn:hover,
-  #contributeSection #addFormSubmitBtn:hover{
+  #contributeSection #addFormSubmitBtn:hover,
+  #editPostSubmitBtn:hover{
       background-color: #dcdcdc;
       color: #801515;
   }
@@ -61,7 +63,7 @@
     padding: 0;
     margin-top: 10px;
   }
-  #contributeSection{
+  #contributeSection, .editPostArea{
     padding: 20px;
     background-color: whitesmoke;
     position: relative;
@@ -70,7 +72,8 @@
 
  
   #contributeSection input, #contributeSection textarea,
-  #addReviewForm input, #addReviewForm textarea{
+  #addReviewForm input, #addReviewForm textarea,
+  .edit-post input, .edit-post textarea {
     display: block;
     min-width: 900px;
     margin: 5px 0;
@@ -94,7 +97,8 @@
   #contributeSection .datepicker{
     display: inline-block;
   }
-  #contributeSection #addFormSubmitBtn{
+  #contributeSection #addFormSubmitBtn,
+  #editPostSubmitBtn{
     min-width: 140px;
     margin-top: 20px;
     font-size: 16px;
@@ -255,6 +259,11 @@ input, textarea {
 }
 .nav-tabs > li > a:hover{
       border-color: transparent;
+}
+
+.editPostBtn{
+  min-width: 30px;
+  margin: 0 10px 0 0;
 }
 
 
