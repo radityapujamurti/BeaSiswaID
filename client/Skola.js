@@ -11,11 +11,6 @@ Meteor.subscribe("posts");
 Meteor.subscribe("reviews");
 Meteor.subscribe("admins");
 
-
-Template.post.rendered = function(){
-  //modify the description text to have new line
-  $('.postDescription').html($('.postDescription').text().replace(/\n\r?/g, '<br />'));
-};
 Template.post.events({
   'click #verify-btn'(){
     Meteor.call("verifyPost", this._id);   
@@ -201,8 +196,15 @@ Template.home.events({
 
 Template.home.helpers({
   locationItems: function(){
-  var distinctEntries = _.uniq(Posts.find({$and: [{verified:true},
-                {archive:false}]}).fetch().map(function(x){
+  var distinctEntries = _.uniq(Posts.find(
+      {
+        $and: [{verified:true},
+        {archive:false}]
+      },
+      {
+        sort: {location:1}
+      } 
+        ).fetch().map(function(x){
     return x.location;
   }),true);
   return distinctEntries;
