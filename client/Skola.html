@@ -136,7 +136,7 @@
   <div class="schPost">
     <span class="post-title">{{title}}</span> 
     <p class="post-sub-title">Eligibility: {{eligibility}} | Location: {{location}} | Deadline: {{deadline}}</p>
-    <p style="margin-top: 10px;">{{description}}</p>  
+    <p class="postDescription" style="margin-top: 10px;">{{description}}</p>  
     <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
     {{#if isAdmin}}
      <button id="verify-btn">Verify</button>        
@@ -183,7 +183,7 @@
       <p class="reviewContent">{{preview}}</p>      
       <p>Author: {{author}}</p>
       {{#if isEditReviewMode}}
-      
+
       <!-- Modal -->
       <div class="modal fade" id="reviewModal" role="dialog">
         <div class="modal-dialog modal-lg">

@@ -11,6 +11,11 @@ Meteor.subscribe("posts");
 Meteor.subscribe("reviews");
 Meteor.subscribe("admins");
 
+
+Template.post.rendered = function(){
+  //modify the description text to have new line
+  $('.postDescription').html($('.postDescription').text().replace(/\n\r?/g, '<br />'));
+};
 Template.post.events({
   'click #verify-btn'(){
     Meteor.call("verifyPost", this._id);   
@@ -297,6 +302,10 @@ Template.reviewArea.helpers({
 
 });
 
+Template.reviewItemExpanded.rendered = function(){ 
+  //modify the description text to have new line
+  $('.reviewContent').html($('.reviewContent').text().replace(/\n\r?/g, '<br />'));
+};
 
 //Google Analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
