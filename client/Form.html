@@ -1,0 +1,46 @@
+<template name="addPostForm">
+    <form class="new-post">
+        <input type="text" name="title" placeholder="title" required>
+        <input type="text" name="eligibility" placeholder="eligibility" data-toggle="tooltip" title="If it is too long, you can put ' - ' here and write the eligibility in the description section below" required>
+        <input type="text" name="location" id="country" required/>
+        <input type="hidden" id="country_code" />
+        <input class="datepicker" data-date-format="dd/mm/yyyy" name="deadline" placeholder="deadline" required>
+        <textarea style="height:200px" data-toggle="tooltip" name="description" placeholder="description" required> Write a short description here! </textarea>
+        <input type="text" name="link" placeholder="link" required>
+        <input type="submit" name="btn-submit" value="Submit" id="addFormSubmitBtn">
+    </form>
+</template>
+
+<template name="addReviewForm">
+    <form class="new-review">
+        <input type="text" name="title" placeholder="title" required>
+        <input type="text" name="location" id="country" required/>
+        <input type="hidden" id="country_code" />
+        <textarea style="height:200px" type="textarea" name="content" placeholder="description" required>Write your story/tips/experience here!</textarea>
+        <input type="submit" name="btn-submit" value="Submit" id="addFormSubmitBtn">
+    </form>   
+</template>
+
+<template name="editPostForm">
+  <form class="edit-post">
+          <input type="text" name="title" placeholder="title" value={{title}} required>
+          <input type="text" name="eligibility" placeholder="eligibility" data-toggle="tooltip" title="If it is too long, you can put ' - ' here and write the eligibility in the description section below" 
+          value={{eligibility}}  required>
+          <input type="text" name="location" id="country" value={{location}} required/>
+          <input type="hidden" id="country_code" />
+          <input class="datepicker" data-date-format="dd/mm/yyyy" name="deadline" placeholder="deadline" value={{deadline}} required>
+          <textarea style="height:200px" data-toggle="tooltip" name="description" placeholder="description" required> {{description}}</textarea>
+          <input type="text" name="link" placeholder="link" value={{link}} required>
+          <input type="submit" name="btn-submit" value="Submit" id="editPostSubmitBtn">
+        </form>
+</template>
+
+<template name="editReviewForm">
+    <form class="edit-review">
+        <input type="text" name="title" placeholder="title" value={{title}} required>
+        <input type="text" name="location" id="country" value={{location}} required/>
+        <input type="hidden" id="country_code" />
+        <textarea style="height:200px" type="textarea" name="content" placeholder="description" required>{{content}}</textarea>
+        <input type="submit" name="btn-submit" value="Submit" id="addFormSubmitBtn">
+    </form>   
+</template>
