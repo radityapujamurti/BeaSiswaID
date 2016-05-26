@@ -49,7 +49,6 @@ Meteor.methods({
       });
   },
   editPost: function(id,title,eligibility,description,deadline,location,link){
-
     Posts.update(id,{
           $set: {
             title: title,
@@ -73,6 +72,21 @@ Meteor.methods({
         dislikers: [],
         archive: false,
         createdAt: new Date()
+    });
+  },
+  editReview: function(id,title,location,content,preview){
+    Reviews.update(id,{
+          $set: {
+            title: title,
+            location: location,
+            content: content,
+            preview: preview
+          }
+    });
+  },
+  deleteReview: function(id){
+    Reviews.update(id,{
+          $set: {archive: true}
     });
   },
   verifyPost: function(id) {

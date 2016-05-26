@@ -45,7 +45,7 @@
     line-height: normal;
   }
   #addReviewBtn{
-         border-bottom: 5px solid #540909;
+    border-bottom: 5px solid #540909;
     min-width: 200px;
     font-size: 18px;
     min-height: 45px;
@@ -57,7 +57,8 @@
         min-width: 200px;
     border-bottom: 3px solid #540909;
   }
-  #close-btn, #reviewCloseBtn{
+  #close-btn, #reviewCloseBtn,
+  .modal-content .close{
     min-width: 40px;
     position: absolute;
     right: 20px;
@@ -65,7 +66,8 @@
     background-color: transparent;
     color: #801515;
   }
-  #close-btn:hover, #reviewCloseBtn:hover{
+  #close-btn:hover, #reviewCloseBtn:hover,
+  .modal-content .close:hover{
     background-color: lightgray;
   }
 
@@ -98,4 +100,19 @@
 #expandedReviewArea .reviewTitle{
 	font-size: 24px;
 	    margin-bottom: 5px; 
+}
+
+.reviewPost .editPostBtn, .reviewPost .deletePostBtn{
+  display: inline;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.reviewPost .editPostBtn, .reviewPost .deletePostBtn{
+  width: 70px;
+}
+
+.modal-title{
+  color: #801515;
+  font-weight: bold;
 }

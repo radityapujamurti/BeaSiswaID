@@ -83,7 +83,31 @@ Template.post.helpers({
     else
       return false;
   }
-})
+});
+
+Template.reviewItem.helpers({
+  isPostOwner: function(){
+    return this.author == Meteor.user().profile.name
+  },
+  isEditReviewMode: function(){
+  if (Session.get("editReviewMode") && (Session.get("editReviewId") == this._id))
+    return true;
+  else
+    return false;
+  }
+});
+Template.reviewItem.events({
+  'click #editReviewBtn'(){
+    Session.set("editReviewMode", true);
+    Session.set("editReviewId", this._id);
+  },
+  'click #delete-btn'(){
+    Meteor.call("deleteReview", this._id);
+  },
+  'click #close-btn'(){
+    Session.set("editReviewMode", false);
+  },
+});
 
 Template.reviewItem.rendered = function(){
     $('#locationList').multiselect({
@@ -260,13 +284,15 @@ Template.home.helpers({
       if(Session.get('showAddReview') == null)
         return true;
       return Session.get('showAddReview');
-    }
+    },
     
   });
 
 Template.reviewArea.helpers({
     reviews: function(){
-      return Reviews.find({verified:true}, {createdAt: -1});
+      return Reviews.find({$and: [{verified:true},
+                    {archive:false}]}, 
+                    {sort: {createdAt: -1}});
     },
 
 });
