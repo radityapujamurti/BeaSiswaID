@@ -111,7 +111,25 @@ Template.addPostForm.rendered = function(){
     return date.valueOf() < now.valueOf() ? 'disabled' : '';
     }
   });
-} 
+}
+
+Template.editPostForm.rendered = function(){
+  $(".edit-post #country").countrySelect({
+    "defaultCountry": "id",
+    "preferredCountries": ["id"]
+  });
+  $(this.find('[data-toggle="tooltip"]')).tooltip();
+  
+  //disable the past dates
+  var nowTemp = new Date();
+  var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+  $('.datepicker').datepicker({
+    onRender: function(date) {
+    return date.valueOf() < now.valueOf() ? 'disabled' : '';
+    }
+  });
+}
+
 Template.addReviewForm.rendered = function(){
   $(".new-review #country").countrySelect();
 }

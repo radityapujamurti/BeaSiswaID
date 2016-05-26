@@ -52,7 +52,7 @@
     {{#if currentUser}}
     <div id="addReviewSection">
       {{#if displayAddReviewBtn}}
-        <button id="addReviewBtn">Write a Review!</button>
+        <button id="addReviewBtn">Write a Story!</button>
         <p>Share your story! It can be about your experience in studying overseas,
           tips or tricks on how to get scholarship, etc. 
           One story can change many students's life tremendously.</p>
@@ -121,7 +121,7 @@
 
 <template name="reviewArea">
     <div class="col-xs-8 section-header">
-    Reviews
+    Stories
     <hr>
     </div>
     <div class="col-xs-4">     
@@ -153,7 +153,15 @@
     {{#if isEditPostMode}}
       <div class="editPostArea">
         <button id="close-btn"><i class="fa fa-close"></i></button>
-        <form class="edit-post">
+        {{> editPostForm}}
+      </div>
+    {{/if}}
+    <hr>
+  </div>
+</template>
+
+<template name="editPostForm">
+  <form class="edit-post">
           <input type="text" name="title" placeholder="title" value={{title}} required>
           <input type="text" name="eligibility" placeholder="eligibility" data-toggle="tooltip" title="If it is too long, you can put ' - ' here and write the eligibility in the description section below" 
           value={{eligibility}}  required>
@@ -164,10 +172,6 @@
           <input type="text" name="link" placeholder="link" value={{link}} required>
           <input type="submit" name="btn-submit" value="Submit" id="editPostSubmitBtn">
         </form>
-      </div>
-    {{/if}}
-    <hr>
-  </div>
 </template>
 
 <template name="reviewItem">
