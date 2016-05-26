@@ -139,7 +139,7 @@
     <p style="margin-top: 10px;">{{description}}</p>  
     <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
     {{#if isAdmin}}
-     <button id="verify-btn">Verify</button><button id="delete-btn">Delete</button>         
+     <button id="verify-btn">Verify</button>        
     {{/if}}
     <button class="userRatingBtn" id="likeBtn"><i class="fa fa-thumbs-o-up"></i></button>
     <span class="ratingSpan">{{likeCount}}</span>
@@ -149,6 +149,13 @@
     <button class="editPostBtn" id="editPostBtn"><i class="fa fa-pencil"></i></button>
     {{/if}}
     <i class="fa fa-user"></i><span class="ratingAuthorSpan">{{author}}</span>
+    {{#if isPostOwner}}
+    <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
+    {{else}}
+      {{#if isAdmin}}
+        <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
+      {{/if}}
+    {{/if}}
 
     {{#if isEditPostMode}}
       <div class="editPostArea">

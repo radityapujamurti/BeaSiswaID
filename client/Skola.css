@@ -261,13 +261,14 @@ input, textarea {
       border-color: transparent;
 }
 
-.editPostBtn{
+.editPostBtn,.deletePostBtn{
   min-width: 30px;
+  width: 30px;
   margin: 0 10px 0 0;
 }
 
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
     #login-buttons-facebook, #login-buttons-logout{
       right: 10px !important;
       position: absolute !important;
