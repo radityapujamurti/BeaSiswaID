@@ -306,7 +306,7 @@ Template.reviewArea.helpers({
 
 Template.reviewItemExpanded.rendered = function(){ 
   //modify the description text to have new line
-  $('.reviewContent').html($('.reviewContent').text().replace(/\n\r?/g, '<br />'));
+  $('.reviewPostExpanded .reviewContent').html($('.reviewPostExpanded .reviewContent').text().replace(/\n\r?/g, '<br />'));
 };
 
 //Google Analytics
