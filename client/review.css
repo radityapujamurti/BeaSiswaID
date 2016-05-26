@@ -77,7 +77,7 @@
 }
 #expandedReviewArea p{
 	font-size: 14px;
-	line-height: normal;
+	line-height: 1.5;
 }
 #expandedReviewArea #expandedReview-close-btn{
 	  min-width: 40px;
