@@ -50,6 +50,12 @@ Template.addReviewForm.events({
     }
 });
 
+Template.editReviewForm.rendered = function(){
+    $(".edit-review #country").countrySelect({
+    "defaultCountry": "id",
+    "preferredCountries": ["id"]
+  });
+}
 Template.editReviewForm.events({
   "submit .edit-review": function (event) {
       // Prevent default browser form submit
@@ -67,4 +73,5 @@ Template.editReviewForm.events({
       alert("Your story has been updated!");
   }
 });
+
 

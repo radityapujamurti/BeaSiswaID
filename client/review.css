@@ -124,3 +124,21 @@
 #reviewArea .reviewTab li a{
   padding: 10px 20px;
 }
+
+.editReviewArea{
+    position: fixed;
+    top: 20px;
+    left: 100px;
+    padding: 50px;
+    background-color: whitesmoke;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.editReviewArea #close-btn{
+    top: 10px;
+    right: 10px;
+}
+
+.edit-review input, .edit-review textarea{
+  font-size: 14px;
+}
