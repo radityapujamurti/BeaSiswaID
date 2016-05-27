@@ -85,6 +85,24 @@ Template.post.helpers({
   }
 });
 
+Template.reviewItem.events({
+  'click #likeBtn'(){
+    var user= Meteor.user();
+    if(!user){
+      alert('Please log in with Facebook');
+    } else {
+      Meteor.call("likeReview", this._id);
+    }
+  },
+  'click #dislikeBtn'(){
+    var user= Meteor.user();
+    if(!user){
+      alert('Please log in with Facebook');
+    } else {
+      Meteor.call("dislikeReview", this._id);
+    }
+  },
+})
 Template.reviewItem.helpers({
   isPostOwner: function(){
     return this.author == Meteor.user().profile.name
@@ -94,7 +112,13 @@ Template.reviewItem.helpers({
     return true;
   else
     return false;
-  }
+  },
+  likeCount: function(){    
+      return this.likers.length
+  },
+  dislikeCount: function(){
+      return this.dislikers.length
+  },
 });
 Template.reviewItem.events({
   'click #editReviewBtn'(){
@@ -295,11 +319,39 @@ Template.home.helpers({
     
   });
 
+Template.reviewArea.events({
+  'click #verifiedReviewTabBtn'(){
+    Session.set('tabReviewMode', 'verified');
+    $('#reviewArea #tabstripNav li').removeClass('active');
+    $('#verifiedReviewTabBtn').addClass('active');
+  },
+  'click #popularReviewTabBtn'(){
+    Session.set('tabReviewMode', 'popular');
+    $('#reviewArea #tabstripNav li').removeClass('active');
+    $('#popularReviewTabBtn').addClass('active');
+  },
+  'click #freshReviewTabBtn'(){
+    Session.set('tabReviewMode', 'fresh');
+    $('#reviewArea #tabstripNav li').removeClass('active');
+    $('#freshReviewTabBtn').addClass('active');
+  },
+})
 Template.reviewArea.helpers({
     reviews: function(){
+      tabReviewMode = Session.get('tabReviewMode');
+      if(tabReviewMode == 'popular'){
+        return Reviews.find({$and: [
+                    {archive:false}]}, 
+                    {sort: {likersCount: -1}});
+      } else if(tabReviewMode == 'fresh'){
+        return Reviews.find({$and: [
+                    {archive:false}]}, 
+                    {sort: {createdAt: -1}});
+      } else {
       return Reviews.find({$and: [{verified:true},
                     {archive:false}]}, 
                     {sort: {createdAt: -1}});
+      }
     },
 
 });

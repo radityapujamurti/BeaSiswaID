@@ -186,4 +186,67 @@ Meteor.methods({
       });
     }
   },
+  likeReview: function(postId) {    
+    var post = Reviews.findOne(postId);
+    //if the user already in a disliker array
+    if (post.dislikers && _.contains(post.dislikers, this.userId)) {
+      Reviews.update({      
+          _id: postId
+        },
+        {
+          $pull: { //remove the same liker from the array
+            dislikers: this.userId
+          },
+          $addToSet: {
+            likers: this.userId
+          }
+        })
+    }  
+    else{
+        Reviews.update({
+          _id: postId
+        }, {$addToSet: {
+          likers: this.userId
+        }
+      })
+    }
+
+    if(_.contains(post.likers, this.userId)){
+        //do not update the like count
+    } else {
+      Reviews.update({
+          _id: postId },
+          {$inc : {likersCount: 1}})
+    }
+  },
+
+  dislikeReview: function(postId) {    
+    var post = Reviews.findOne(postId);
+    //if the user already in a liker array
+    if (post.likers && _.contains(post.likers, this.userId)) {
+      Reviews.update({      
+          _id: postId
+        },
+        {
+          $pull: { //remove the disliker from the array
+            likers: this.userId
+          },
+          $addToSet: {
+            dislikers: this.userId
+          }
+        });
+
+      Reviews.update({
+          _id: postId },
+          {$inc : {likersCount: -1}});
+    }
+    else{
+      Reviews.update({
+        _id: postId
+      }, {$addToSet: {
+        dislikers: this.userId
+        }
+      });
+    }
+  },
 });

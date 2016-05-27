@@ -116,3 +116,11 @@
   color: #801515;
   font-weight: bold;
 }
+
+#reviewArea .reviewTab{
+  margin: 0;
+  margin-bottom: -40px;
+}
+#reviewArea .reviewTab li a{
+  padding: 10px 20px;
+}
