@@ -1,0 +1,34 @@
+<template name="post"> 
+  <div class="schPost">
+    <span class="post-title">{{title}}</span> 
+    <p class="post-sub-title">Eligibility: {{eligibility}} | Location: {{location}} | Deadline: {{deadline}}</p>
+    <p class="postDescription" style="margin-top: 10px;">{{description}}</p>  
+    <p>Source link: <a href="{{link}}" target="_blank">{{link}}</a></p>
+    {{#if isAdmin}}
+     <button id="verify-btn">Verify</button>        
+    {{/if}}
+    <button class="userRatingBtn" id="likeBtn"><i class="fa fa-thumbs-o-up"></i></button>
+    <span class="ratingSpan">{{likeCount}}</span>
+    <button class="userRatingBtn" id="dislikeBtn"><i class="fa fa-thumbs-o-down"></i></button>
+    <span class="ratingSpan">{{dislikeCount}}</span>
+    {{#if isPostOwner}}
+    <button class="editPostBtn" id="editPostBtn"><i class="fa fa-pencil"></i></button>
+    {{/if}}
+    <i class="fa fa-user"></i><span class="ratingAuthorSpan">{{author}}</span>
+    {{#if isPostOwner}}
+    <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
+    {{else}}
+      {{#if isAdmin}}
+        <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
+      {{/if}}
+    {{/if}}
+
+    {{#if isEditPostMode}}
+      <div class="editPostArea">
+        <button id="close-btn"><i class="fa fa-close"></i></button>
+        {{> editPostForm}}
+      </div>
+    {{/if}}
+    <hr>
+  </div>
+</template>

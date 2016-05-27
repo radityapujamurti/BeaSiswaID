@@ -1,0 +1,29 @@
+<template name="reviewItem">
+    <div class="reviewPost">
+      <p class="reviewTitle"><a href="#">{{title}}</a></p>      
+      {{#if isPostOwner}}
+      <button class="editPostBtn" id="editReviewBtn" data-toggle="modal" data-target="#reviewModal">edit</button>
+      {{/if}}
+      {{#if isPostOwner}}
+      <button id="delete-btn" class="deletePostBtn">delete</button>
+      {{else}}
+        {{#if isAdmin}}
+          <button id="delete-btn" class="deletePostBtn">delete</button>
+        {{/if}}
+      {{/if}}
+      <p class="reviewContent">{{preview}}</p>
+      <button class="userRatingBtn" id="likeBtn"><i class="fa fa-thumbs-o-up"></i></button>
+      <span class="ratingSpan">{{likeCount}}</span>
+      <button class="userRatingBtn" id="dislikeBtn"><i class="fa fa-thumbs-o-down"></i></button>
+      <span class="ratingSpan">{{dislikeCount}}</span>      
+      <p>Author: {{author}}</p>
+
+      {{#if isEditReviewMode}}
+        <div class="editReviewArea">
+          <button id="close-btn"><i class="fa fa-close"></i></button>
+          {{> editReviewForm}}
+        </div>
+      {{/if}}
+      
+    </div>   
+  </template>

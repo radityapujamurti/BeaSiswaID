@@ -1,0 +1,15 @@
+<template name="reviewArea">
+    <div class="section-header">
+    Stories
+    <div id="tabstripNav" class="reviewTab">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active" id="verifiedReviewTabBtn"><a href="#"><i class="fa fa-check"></i></a></li>
+        <li role="presentation" id="popularReviewTabBtn"><a href="#"><i class="fa fa-star"></i></a></li>
+        <li role="presentation" id="freshReviewTabBtn"><a href="#"><i class="fa fa-clock-o"></i></a></li>
+      </ul>
+    </div>
+    </div>
+    {{#each reviews}}
+        {{> reviewItem}}
+    {{/each}}
+</template>
