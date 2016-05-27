@@ -16,7 +16,12 @@ Template.post.events({
     Meteor.call("verifyPost", this._id);   
   },
   'click #delete-btn'(){
+    var r = confirm("Confirm to delete this post?");
+    if (r == true) {
     Meteor.call("deletePost", this._id);
+    } else {
+      return;
+    }
   },
   'click #likeBtn'(){
     var user= Meteor.user();
@@ -126,7 +131,12 @@ Template.reviewItem.events({
     Session.set("editReviewId", this._id);
   },
   'click #delete-btn'(){
-    Meteor.call("deleteReview", this._id);
+    var r = confirm("Confirm to delete this story?");
+    if (r == true) {
+      Meteor.call("deleteReview", this._id);
+    } else {
+      return;
+    }
   },
   'click #close-btn'(){
     Session.set("editReviewMode", false);
