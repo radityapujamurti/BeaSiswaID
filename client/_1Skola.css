@@ -1,0 +1,317 @@
+#login-buttons-facebook,
+#login-buttons-logout{
+  border-radius: 0 !important;
+  border-color: transparent !important;
+  margin-top: 10px !important;
+  position: absolute !important;
+  right: 50px !important;
+  top: 15px !important;
+}
+
+.login-display-name{
+    display: none !important;
+}
+
+.nav.nav-tabs{
+  font-size: 18px;
+}
+
+  footer{
+  display: none;
+}
+
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+
+  :focus{
+    outline: none !important;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  button, #addReviewForm #addFormSubmitBtn,
+  #contributeSection #addFormSubmitBtn, #addFormSubmitBtn,
+  #editPostSubmitBtn, .modal-content #addFormSubmitBtn{
+        background-color: #801515;
+    border: none;
+    min-width: 80px;
+    min-height: 25px;
+    padding: 5px;
+    color: #fff;
+    transition: color 0.2s, background-color 0.2s;
+    font-size: 12px;
+  }
+  button:hover,#addReviewForm #addFormSubmitBtn:hover,
+  #contributeSection #addFormSubmitBtn:hover,
+  #editPostSubmitBtn:hover, #addFormSubmitBtn:hover,
+  .modal-content #addFormSubmitBtn:hover{
+      background-color: #dcdcdc;
+      color: #801515;
+  }
+
+  #contribute-btn {
+    display: inline;
+    min-width: 40px;
+    min-height: 30px;
+    margin: 0;
+    font-size: 16px;
+    position: absolute;
+    padding: 0;
+    margin-top: 10px;
+  }
+  #contributeSection, .editPostArea{
+    padding: 20px;
+    background-color: whitesmoke;
+    position: relative;
+    font-size: 14px;
+  }
+
+ 
+  #contributeSection input, #contributeSection textarea,
+  #addReviewForm input, #addReviewForm textarea,
+  .edit-post input, .edit-post textarea,
+  .edit-review input, .edit-review textarea {
+    display: block;
+    min-width: 980px;
+    margin: 5px 0;
+    padding: 0 10px;
+    border-radius: 0;
+    color: #801515;
+  }
+  .modal-content .edit-review input, 
+  .modal-content .edit-review textarea{
+      min-width: 850px;
+      font-size: 16px;
+  }
+
+  #contributeSection #country, #contributeSection .datepicker{
+    min-width:440px;
+    display: inline-block;
+  }
+  #contributeSection #country,
+  .new-review #country{
+    padding-left: 50px;
+  }
+  #contributeSection .flag{
+  }
+  #contributeSection .datepicker{
+    margin-left: 15px;
+  }
+  #contributeSection .datepicker{
+    display: inline-block;
+  }
+  #contributeSection #addFormSubmitBtn,
+  #editPostSubmitBtn{
+    min-width: 140px;
+    margin-top: 20px;
+    font-size: 16px;
+  }
+  
+  #verify-btn, #delete-btn{
+    margin: 0 5px;
+  }
+
+  .btn.multiselect{
+    min-width: 200px;
+    text-align: left;
+    border-radius: 0;
+    border: none;
+  }
+  .btn.multiselect .caret{
+        right: 10px;
+    top: 15px;
+    position: absolute;
+  }
+  .multiselect-container.dropdown-menu{
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    min-width: 200px;
+        padding: 0;
+  }
+  .dropdown-menu > li > a{
+    padding-left: 0;
+  }
+  .multiselect-container>li>a>label{
+    padding: 3px 20px 3px 30px;
+  }
+
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+      background-color: #801515; /* Red */
+      color: #ffffff;
+  }
+  .bg-2 { 
+      background-color: #ffffff; /* White */
+      color: #801515;
+  }
+  .bg-3 { 
+      background-color: #2f2f2f; /* Black Gray */
+      color: #fff;
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 16px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  .navbar-brand{
+        font-size: 36px;
+  }
+  .navbar-nav  li a:hover {
+      color: #801515 !important;
+  }
+
+  .section-header{
+        font-size: 1.5em;
+    margin: 10px 20px 10px 0;
+    font-weight: bold;
+    padding-left: 0;
+    display: inline;
+  }
+
+  #login-dropdown-list{
+        left: -100px;
+  }
+
+.schPost{
+  line-height: 1.5;
+}
+
+.new-post input{
+  color: black;
+  display: block;
+}
+
+input, textarea {
+    /*margin: 10px;
+    width: 1000px;
+        padding: 5px 10px;*/
+}
+
+.post-title{
+  font-size: 1.2em;
+  font-weight: normal; 
+  display: block;
+  margin-bottom: 10px;  
+}
+
+.post-sub-title{
+  font-size: 0.7em;
+  font-style: italic;
+}
+
+.locationList{
+  color: black;
+}
+
+.new-post{
+  color:black;
+}
+
+.datepicker {
+  color: #801515;
+  width: 400px;
+}
+ 
+#tabstripNav{
+  margin-bottom: 20px;
+      margin-top: 10px;
+}
+
+.userRatingBtn{
+  background-color: transparent;
+  min-width: 35px;
+      margin: 0;
+}
+.userRatingBtn i{
+  font-size: 20px;
+      color: #801515;
+}
+.ratingSpan{
+  margin-left: -5px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+.ratingAuthorSpan{
+  font-size: 16px;
+      margin-left: 5px;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+      border-radius: 0;
+     color: #fff;
+    background-color: #801515;
+    border-color: transparent;
+}
+.nav-tabs > li > a{
+      border-radius: 0;
+     color: #801515;
+    background-color: transparent;
+    border-color: transparent;
+    -webkit-transition: background-color  0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color  0.3s ;
+}
+.nav-tabs > li > a:hover{
+      border-color: transparent;
+}
+
+.editPostBtn,.deletePostBtn{
+  min-width: 30px;
+  width: 30px;
+  margin: 0 10px 0 0;
+}
+
+
+@media screen and (max-width: 700px) {
+    #login-buttons-facebook, #login-buttons-logout{
+      right: 10px !important;
+      position: absolute !important;
+    }
+    #landingPageDesc{
+      display: none;
+    }
+    #reviewArea{
+      display: none;
+    }
+    #scholarshipListArea{
+      width: 100%;
+    }
+    #addReviewSection{
+      display: none;
+    }
+    .new-post input, .new-post textarea,
+     .datepicker, .country-select{
+      min-width: 100% !important;
+      width: 100% !important;
+    }
+    .datepicker{
+      margin-left: 0 !important; 
+      margin-right: 0 !important; 
+    }
+    .datepicker.dropdown-menu{
+      top: 90% !important;
+      left: 0 !important;
+    }
+    #close-btn{
+      top: -5px !important;
+      right: 0 !important;
+    }
+    
+    .schPost p{
+      overflow: hidden !important;
+    }
+}
