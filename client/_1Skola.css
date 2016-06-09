@@ -70,6 +70,7 @@
   }
   #contributeSection, .editPostArea{
     padding: 20px;
+    padding-top: 50px;
     background-color: whitesmoke;
     position: relative;
     font-size: 14px;
@@ -81,7 +82,7 @@
   .edit-post input, .edit-post textarea,
   .edit-review input, .edit-review textarea {
     display: block;
-    min-width: 980px;
+    min-width: 900px;
     margin: 5px 0;
     padding: 0 10px;
     border-radius: 0;
@@ -110,7 +111,8 @@
     display: inline-block;
   }
   #contributeSection #addFormSubmitBtn,
-  #editPostSubmitBtn{
+  #editPostSubmitBtn, #addReviewForm  #addFormSubmitBtn,
+  #addFormSubmitBtn{
     min-width: 140px;
     margin-top: 20px;
     font-size: 16px;
@@ -204,8 +206,10 @@
   #login-buttons .login-button, .accounts-dialog .login-button{
         background: none;
   }
-  #login-buttons .text-besides-image{
+  #login-buttons .text-besides-image,
+  #login-buttons .login-button, .accounts-dialog .login-button{
     font-size: 16px;
+    font-family: Montserrat, sans-serif;
   }
 
 .schPost{
