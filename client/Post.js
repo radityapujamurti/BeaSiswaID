@@ -39,13 +39,12 @@ Template.post.events({
 
       // Get value from form element
       var title = event.target.title.value;
-      var eligibility = event.target.eligibility.value;
       var description = event.target.description.value;
       var deadline = event.target.deadline.value;
       var location = event.target.location.value;
       var link = event.target.link.value;
  
-      Meteor.call("editPost", this._id, title, eligibility, description, deadline, location, link);
+      Meteor.call("editPost", this._id, title, description, deadline, location, link);
 
       alert("The post has been updated");
       Session.set("editPostMode", false);

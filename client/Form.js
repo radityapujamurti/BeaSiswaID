@@ -6,18 +6,16 @@ Template.addPostForm.events({
 
       // Get value from form element
       var title = event.target.title.value;
-      var eligibility = event.target.eligibility.value;
       var description = event.target.description.value;
       var deadline = event.target.deadline.value;
       var location = event.target.location.value;
       var link = event.target.link.value;
  
       // Insert a task into the collection
-      Meteor.call("addPost", title, eligibility, description, deadline, location, link);
+      Meteor.call("addPost", title, description, deadline, location, link);
  
       // Clear form
       event.target.title.value= "";
-      event.target.eligibility.value= "";
       event.target.description.value= "";
       event.target.deadline.value= "";
       event.target.location.value= "";

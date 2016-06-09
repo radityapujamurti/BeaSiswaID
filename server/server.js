@@ -25,7 +25,7 @@ Meteor.methods({
         });
       }
   },
-  addPost: function(title,eligibility,description,deadline,location,link) {
+  addPost: function(title,description,deadline,location,link) {
     var isVerified;
     if(Meteor.userId() == 'TWFHrTkLYzeYDdp88'){
       isVerified = true;
@@ -34,7 +34,6 @@ Meteor.methods({
     }
     Posts.insert({
         title: title,
-        eligibility: eligibility,
         description: description,
         deadline: deadline,
         location: location,
@@ -48,11 +47,10 @@ Meteor.methods({
         createdAt: new Date() // current time
       });
   },
-  editPost: function(id,title,eligibility,description,deadline,location,link){
+  editPost: function(id,title,description,deadline,location,link){
     Posts.update(id,{
           $set: {
             title: title,
-            eligibility: eligibility,
             description: description,
             deadline: deadline,
             location: location,
