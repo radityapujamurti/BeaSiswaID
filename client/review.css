@@ -41,8 +41,9 @@
     font-size: 18px;
     margin-left: 30px;
     position: absolute;
-    top: 15px;
+    top: 10px;
     line-height: normal;
+    margin-right: 10px;
   }
   #addReviewBtn{
     border-bottom: 5px solid #540909;
@@ -141,4 +142,8 @@
 
 .edit-review input, .edit-review textarea{
   font-size: 14px;
+}
+
+li.active i{
+  color: white;
 }
