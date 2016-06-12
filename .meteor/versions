@@ -47,8 +47,8 @@ iron:core@1.0.11
 iron:dynamic-template@1.0.12
 iron:layout@1.0.12
 iron:location@1.0.11
-iron:middleware-stack@1.0.11
-iron:router@1.0.12
+iron:middleware-stack@1.1.0
+iron:router@1.0.13
 iron:url@1.0.11
 jquery@1.11.8
 lai:collection-extensions@0.1.4
@@ -66,8 +66,8 @@ meteortoys:blueprint@2.1.0
 meteortoys:email@2.1.0
 meteortoys:hotreload@2.1.0
 meteortoys:listen@2.1.0
-meteortoys:method@3.0.2
-meteortoys:pub@3.0.2
+meteortoys:method@3.0.4
+meteortoys:pub@3.0.4
 meteortoys:result@2.1.0
 meteortoys:shell@2.1.0
 meteortoys:status@2.1.0
@@ -92,7 +92,7 @@ observe-sequence@1.0.11
 ordered-dict@1.0.7
 practicalmeteor:chai@2.1.0_1
 practicalmeteor:loglevel@1.2.0_2
-practicalmeteor:mocha@2.4.5_1
+practicalmeteor:mocha@2.4.5_2
 practicalmeteor:mocha-core@0.1.4
 practicalmeteor:sinon@1.14.1_2
 promise@0.6.7
