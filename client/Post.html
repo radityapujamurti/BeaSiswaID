@@ -17,12 +17,7 @@
     <i class="fa fa-user"></i><span class="ratingAuthorSpan">{{author}}</span>
     {{#if isPostOwner}}
     <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
-    {{else}}
-      {{#if isAdmin}}
-        <button id="delete-btn" class="deletePostBtn"><i class="fa fa-trash"></i></button>
-      {{/if}}
     {{/if}}
-
     {{#if isEditPostMode}}
       <div class="editPostArea">
         <button id="close-btn"><i class="fa fa-close"></i></button>
